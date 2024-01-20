@@ -5,14 +5,14 @@ import Player from './components/Player/Player';
 import { useState } from 'react';
 
 function App() {
-  const [fileData, setFileData] = useState("")
+
 
   return (
     <div className="App">
       <Screen/>
-      <Player fileData={fileData} setFileData={setFileData}/>
+      <Player />
       <Mixer/>
-      <Player fileData={fileData} setFileData={setFileData}/>
+      <Player/>
 
     </div>
   );

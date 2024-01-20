@@ -6,6 +6,7 @@ export async function onChange(event, setFileData) {
     }
 }
 
-export async function onSubmit(event, fileData) {
-    
+export async function onSubmit(event, setPlayerUrl) {
+    event.preventDefault()
+    setPlayerUrl("/8096989_Rub_(Original Mix).mp3")
 }
