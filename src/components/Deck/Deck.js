@@ -1,41 +1,55 @@
-import { getMetaData, loadTrack, onChange } from "./functions";
+import { getMetaData, onChange } from "./functions";
 import { useState, useEffect } from "react";
 import uploadAudio from "./uploadAudio";
+import styles from "./Deck.module.css"
 
-export default function Deck({ player, setMetaData }) {
+export default function Deck({ player, setMetaData, setTimeOnPlay }) {
   const [isTrackLoading, setIsTrackLoading] = useState(false);
   const [fileData, setFileData] = useState("");
   const [playerUrl, setPlayerUrl] = useState("");
 
   function play() {
     player.start();
+    setTimeOnPlay(player.immediate())
+    // cannot press play unless buffer has loaded
   }
+
+  console.log(player.loaded);
+
 
   async function onSubmit(event, fileData) {
     event.preventDefault();
+    setIsTrackLoading(true);
 
     const playerUrl = await uploadAudio(fileData);
-    setIsTrackLoading(true);
     // await loadTrack(fileData)
-    
+
     if (playerUrl) {
       const metaData = await getMetaData(playerUrl);
       setMetaData(metaData);
       setPlayerUrl(playerUrl);
-      setIsTrackLoading(false);
-
     }
   }
 
   useEffect(() => {
     if (playerUrl !== "") {
       console.log("playerUrl in useEffect:", playerUrl);
+
+      player.load(playerUrl);
+      console.log(player.loaded);
+      setIsTrackLoading(false);
     }
   }, [playerUrl]);
 
   return (
-    <>
-      <p>Player</p>
+    <div className={styles.container}>
+      <div className={styles.info}>
+            <h3>Player 1</h3>
+            <p>Billy Hologram (Original Mix)</p>
+            <p>Milanese</p>
+            <p>fabric presents Overmono</p>
+            <p>8</p>
+          </div>
       <form name="uploadForm" onSubmit={(event) => onSubmit(event, fileData)}>
         <label htmlFor="upload">Upload</label>
         <input
@@ -45,7 +59,10 @@ export default function Deck({ player, setMetaData }) {
         ></input>
         <button type="submit">Load</button>
       </form>
-      <button onClick={play}>Play</button>
-    </>
+      <p>{isTrackLoading && "Loading..."}</p>
+      <button onClick={play} disabled={isTrackLoading ? true : false}>
+        Play
+      </button>
+    </div>
   );
 }
