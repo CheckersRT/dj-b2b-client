@@ -1,5 +1,7 @@
 import { Player } from "tone";
 import {
+  waveformCh1,
+  waveformCh2,
   gainCh1,
   gainCh2,
   eqCh1,
@@ -18,21 +20,20 @@ export default function createPlayer(channel) {
     url = "/8096989_Rub_(Original Mix).mp3";
   }
 
-  const player = new Player(
-    {
+  const player = new Player({
     url: url,
     onload: () => {
       console.log("loaded");
+      //   setIsTrackLoading(false)
     },
-  }
-  );
-//   await player.load(url)
+  });
+  //   await player.load(url)
 
   // sets up audio chain with imported nodes
   if (channel === 1) {
-    player.chain(gainCh1, eqCh1, volCh1, crossFader.a);
+    player.chain(waveformCh1, gainCh1, eqCh1, volCh1, crossFader.a);
   } else if (channel === 2) {
-    player.chain(gainCh2, eqCh2, volCh2, crossFader.b);
+    player.chain(waveformCh2, gainCh2, eqCh2, volCh2, crossFader.b);
   }
 
   return player;

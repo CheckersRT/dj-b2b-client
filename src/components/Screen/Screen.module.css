@@ -1,0 +1,22 @@
+.container {
+    /* display: flex;
+    flex-direction: column; */
+    margin: auto;
+    justify-content: left;
+    overflow: hidden;
+}
+
+.waveform {
+    position: relative;
+    animation: scroll 180s infinite; 
+}
+
+.animate {
+    position: relative;
+}
+
+@keyframes scroll {
+    from {left: 40vw;}
+    to {left: -14000px;}
+    
+}
