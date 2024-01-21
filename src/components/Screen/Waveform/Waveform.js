@@ -8,9 +8,21 @@ export default function Waveform({metaData}) {
     const fileName = "zunql45o377mo2hobplr"
 
     const imageSrc = baseUrl + waveformSettings + fileName + ".png"
-    
+    const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY
+    console.log(cloudinaryApiKey)
+    // getMetaData()
 
     return (
         <img src={imageSrc}></img>
     )
+}
+
+async function getMetaData() {
+
+
+    const response = await fetch(`https://${process.env.CLOUDINARY_API_KEY}:${process.env.CLOUDINARY_API_SECRET}@api.cloudinary.com/v1_1/resources/video/upload/zunql45o377mo2hobplr?image_metadata=true`)
+
+    const data = response.json()
+    console.log(data)
+
 }
