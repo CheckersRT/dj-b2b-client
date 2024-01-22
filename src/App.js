@@ -14,7 +14,6 @@ function App() {
   const [metaDataCh2, setMetaDataCh2] = useState({});
   const [timeOnPlayCh1, setTimeOnPlayCh1] = useState(0);
   const [timeOnPlayCh2, setTimeOnPlayCh2] = useState(0);
-  
 
   const playerCh1Ref = useRef(playerCh1);
   const playerCh2Ref = useRef(playerCh2);
@@ -49,6 +48,11 @@ function App() {
           setTimeOnPlay={setTimeOnPlayCh2}
         />
       </div>
+      <form>
+        <label htmlFor="xmlUpload"></label>
+        <input name="xmlUpload" type="file" onChange={setXMLFile()}/>
+        <button type="submit">Upload XML</button>
+      </form>
     </div>
   );
 }
