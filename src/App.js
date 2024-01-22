@@ -2,9 +2,9 @@ import "./App.css";
 import Screen from "./components/Screen/Screen";
 import Mixer from "./components/Mixer/Mixer";
 import Deck from "./components/Deck/Deck";
+import Library from "./components/Library/Library";
 import { useState, useRef } from "react";
 import createPlayer from "./utils/createPlayer";
-import styled from "styled-components";
 
 const playerCh1 = createPlayer(1);
 const playerCh2 = createPlayer(2);
@@ -16,8 +16,7 @@ function App() {
   const [timeOnPlayCh2, setTimeOnPlayCh2] = useState(0);
   const [xmlFile, setXmlFile] = useState("");
   const [playlistsArray, setPlaylistsArray] = useState();
-  const [tracksArray, setTracksArray] = useState();
-  const [playlistSelected, setPlaylistSelected] = useState(false);
+
 
   const playerCh1Ref = useRef(playerCh1);
   const playerCh2Ref = useRef(playerCh2);
@@ -70,37 +69,7 @@ function App() {
     }
   }
 
-  async function handleClick(event) {
-
-    const name = event.target.getAttribute("name");
-    console.log(event.target.getAttribute("name"));
-
-    setPlaylistSelected(!playlistSelected);
-
-    try {
-      const response = await fetch(
-        "http://localhost:3030/getTracksInPlaylist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ playlistName: name }),
-        }
-      );
-
-      const data = await response.json();
-      console.log(data);
-      setTracksArray(data);
-    } catch (error) {}
-  }
-
-  async function handleClickTrack(event) {
-    event.stopPropagation()
-    const name = event.target.getAttribute("name");
-
-    console.log(name);
-  }
+  
 
   return (
     <div className="container">
@@ -116,6 +85,7 @@ function App() {
         <Deck
           className="column"
           player={playerCh1Ref.current}
+          metaData={metaDataCh1}
           setMetaData={setMetaDataCh1}
           setTimeOnPlay={setTimeOnPlayCh1}
         />
@@ -141,35 +111,7 @@ function App() {
         />
         <button type="submit">Upload XML</button>
       </form>
-      <ul>
-        {playlistsArray
-          ? playlistsArray.map((playlist) => (
-              <li
-                onClick={(event) => handleClick(event)}
-                key={playlist.attributes.Name}
-                name={playlist.attributes.Name}
-              >
-                {playlist.attributes.Name}
-                {playlistSelected ? (
-                  <ul>
-                    {tracksArray
-                      ? tracksArray.playlistName === playlist.attributes.Name &&
-                        tracksArray.trackList.map((track) => (
-                          <li
-                            key={track}
-                            name={track}
-                            onClick={(event) => handleClickTrack(event)}
-                          >
-                            {track}
-                          </li>
-                        ))
-                      : null}
-                  </ul>
-                ) : null}
-              </li>
-            ))
-          : null}
-      </ul>
+      <Library playlistsArray={playlistsArray}/>
     </div>
   );
 }

@@ -6,5 +6,8 @@ export default function handleEq(event, channel, param, sendReceive) {
     if(channel === 1) {
         eqCh1[param].value = event.target.value
         console.log(eqCh1[param].value)
+    } else if(channel === 2) {
+        eqCh2[param].value = event.target.value
+        console.log(eqCh2[param].value)
     }
 }

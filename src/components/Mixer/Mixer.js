@@ -1,4 +1,3 @@
-import EqKnob from "./EqKnob/EqKnob";
 import Channel from "./Channel/Channel";
 import styles from "./Mixer.module.css"
 

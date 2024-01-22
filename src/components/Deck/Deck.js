@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import uploadAudio from "./uploadAudio";
 import styles from "./Deck.module.css"
 
-export default function Deck({ player, setMetaData, setTimeOnPlay }) {
+export default function Deck({ player, metaData, setMetaData, setTimeOnPlay }) {
   const [isTrackLoading, setIsTrackLoading] = useState(false);
   const [fileData, setFileData] = useState("");
   const [playerUrl, setPlayerUrl] = useState("");
@@ -15,6 +15,7 @@ export default function Deck({ player, setMetaData, setTimeOnPlay }) {
   }
 
   console.log(player.loaded);
+  // console.log(metaData)
 
 
   async function onSubmit(event, fileData) {
@@ -44,8 +45,10 @@ export default function Deck({ player, setMetaData, setTimeOnPlay }) {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-            <h3>Player 1</h3>
-            <p>Billy Hologram (Original Mix)</p>
+            <h3>Player</h3>
+            <p>
+            Billy Hologram (Original Mix)
+            </p>
             <p>Milanese</p>
             <p>fabric presents Overmono</p>
             <p>8</p>
