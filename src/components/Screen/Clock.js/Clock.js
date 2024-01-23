@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Clock({ player, timeOnPlay }) {
   const [clock, setClock] = useState(0);
 
+  
     setInterval(() => {
       const currentTime = player.immediate().toFixed(2)
 

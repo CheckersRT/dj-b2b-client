@@ -15,12 +15,8 @@ export default function Screen({
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.waveform}>
-          <Waveform metaData={metaDataCh1} />
-        </div>
-        <div className={styles.waveform}>
-          <Waveform metaData={metaDataCh2} />
-        </div>
+          <Waveform player={player1} metaData={metaDataCh1} />
+          <Waveform player={player2} metaData={metaDataCh2} />
       </div>
       <Clock player={player1} timeOnPlay={timeOnPlayCh1} />
       <Clock player={player2} timeOnPlay={timeOnPlayCh2} />

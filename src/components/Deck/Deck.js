@@ -3,12 +3,18 @@ import { useState, useEffect } from "react";
 import uploadAudio from "./uploadAudio";
 import styles from "./Deck.module.css";
 import getMetaData from "../../api/getMetaData";
+import PlayPauseButton from "./PlayPauseButton/PlayPauseButton";
+import JogWheel from "./JogWheel/JogWheel";
+import CueButton from "./CueButton/CueButton";
 
 export default function Deck({
   player,
   metaData,
   setMetaData,
+  timeOnPlay,
   setTimeOnPlay,
+  timeElapsed,
+  setTimeElapsed,
   playerUrl,
   setPlayerUrl,
   isPlayerLoading,
@@ -72,9 +78,16 @@ export default function Deck({
         <button type="submit">Load</button>
       </form>
       <p>{isPlayerLoading && "Loading..."}</p>
-      <button onClick={play} disabled={isPlayerLoading ? true : false}>
-        Play
-      </button>
+      <JogWheel player={player}/>
+      <CueButton player={player}/>
+      <PlayPauseButton
+        timeOnPlay={timeOnPlay}
+        setTimeOnPlay={setTimeOnPlay}
+        timeElapsed={timeElapsed}
+        setTimeElapsed={setTimeElapsed}
+        player={player}
+        isPlayerLoading={isPlayerLoading}
+      />
     </div>
   );
 }

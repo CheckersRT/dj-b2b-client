@@ -14,6 +14,8 @@ function App() {
   const [metaDataCh2, setMetaDataCh2] = useState({});
   const [timeOnPlayCh1, setTimeOnPlayCh1] = useState(0);
   const [timeOnPlayCh2, setTimeOnPlayCh2] = useState(0);
+  const [timeElapsedCh1, setTimeElapsedCh1] = useState(0);
+  const [timeElapsedCh2, setTimeElapsedCh2] = useState(0);
   const [xmlFile, setXmlFile] = useState("");
   const [playlistsArray, setPlaylistsArray] = useState();
   const [playerUrlCh1, setPlayerUrlCh1] = useState("");
@@ -92,7 +94,11 @@ function App() {
           setIsPlayerLoading={setIsPlayer1Loading}
           metaData={metaDataCh1}
           setMetaData={setMetaDataCh1}
+          timeOnPlay={timeOnPlayCh1}
           setTimeOnPlay={setTimeOnPlayCh1}
+          timeElapsed={timeElapsedCh1}
+          setTimeElapsed={setTimeElapsedCh1}
+
         />
 
         <Mixer
@@ -108,7 +114,10 @@ function App() {
           isPlayerLoading={isPlayer2Loading}
           setIsPlayerLoading={setIsPlayer2Loading}
           setMetaData={setMetaDataCh2}
+          timeOnPlay={timeOnPlayCh2}
           setTimeOnPlay={setTimeOnPlayCh2}
+          timeElapsed={timeElapsedCh2}
+          setTimeElapsed={setTimeElapsedCh2}
         />
       </div>
       <form onSubmit={(event) => handleSubmit(event, xmlFile)}>
