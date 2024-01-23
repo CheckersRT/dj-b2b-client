@@ -8,23 +8,6 @@ export async function onChange(event, setFileData) {
     }
 }
 
-export async function getMetaData(playerUrl) {
-    try {
-      const response = await fetch("http://localhost:3030/metadata", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({url: playerUrl}),
-      })
-       const data = await response.json()
-       console.log(data)
-       return data
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
 export async function loadTrack(fileData) {
     const fileName = fileData.name
     try {

@@ -1,25 +1,34 @@
-import { getMetaData, onChange } from "./functions";
+import { onChange } from "./functions";
 import { useState, useEffect } from "react";
 import uploadAudio from "./uploadAudio";
-import styles from "./Deck.module.css"
+import styles from "./Deck.module.css";
+import getMetaData from "../../api/getMetaData";
 
-export default function Deck({ player, setMetaData, setTimeOnPlay }) {
-  const [isTrackLoading, setIsTrackLoading] = useState(false);
+export default function Deck({
+  player,
+  metaData,
+  setMetaData,
+  setTimeOnPlay,
+  playerUrl,
+  setPlayerUrl,
+  isPlayerLoading,
+  setIsPlayerLoading,
+}) {
   const [fileData, setFileData] = useState("");
-  const [playerUrl, setPlayerUrl] = useState("");
+  // const [playerUrl, setPlayerUrl] = useState("");
 
   function play() {
     player.start();
-    setTimeOnPlay(player.immediate())
+    setTimeOnPlay(player.immediate());
     // cannot press play unless buffer has loaded
   }
 
   console.log(player.loaded);
-
+  // console.log(metaData)
 
   async function onSubmit(event, fileData) {
     event.preventDefault();
-    setIsTrackLoading(true);
+    setIsPlayerLoading(true);
 
     const playerUrl = await uploadAudio(fileData);
     // await loadTrack(fileData)
@@ -37,19 +46,22 @@ export default function Deck({ player, setMetaData, setTimeOnPlay }) {
 
       player.load(playerUrl);
       console.log(player.loaded);
-      setIsTrackLoading(false);
+      setIsPlayerLoading(false);
     }
   }, [playerUrl]);
 
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-            <h3>Player 1</h3>
-            <p>Billy Hologram (Original Mix)</p>
-            <p>Milanese</p>
-            <p>fabric presents Overmono</p>
-            <p>8</p>
-          </div>
+        <h3>Player</h3>
+        <p>{metaData && metaData.title}</p>
+        <p>{metaData && metaData.artist}</p>
+        <p>{metaData && metaData.album}</p>
+        <p>{metaData && metaData.track}</p>
+        <p>{metaData && metaData.duration}</p>
+        <p>{metaData && metaData.bpm}</p>
+        <p>{metaData && metaData.tonality}</p>
+      </div>
       <form name="uploadForm" onSubmit={(event) => onSubmit(event, fileData)}>
         <label htmlFor="upload">Upload</label>
         <input
@@ -59,8 +71,8 @@ export default function Deck({ player, setMetaData, setTimeOnPlay }) {
         ></input>
         <button type="submit">Load</button>
       </form>
-      <p>{isTrackLoading && "Loading..."}</p>
-      <button onClick={play} disabled={isTrackLoading ? true : false}>
+      <p>{isPlayerLoading && "Loading..."}</p>
+      <button onClick={play} disabled={isPlayerLoading ? true : false}>
         Play
       </button>
     </div>
