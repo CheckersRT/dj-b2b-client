@@ -16,7 +16,10 @@ function App() {
   const [timeOnPlayCh2, setTimeOnPlayCh2] = useState(0);
   const [xmlFile, setXmlFile] = useState("");
   const [playlistsArray, setPlaylistsArray] = useState();
-
+  const [playerUrlCh1, setPlayerUrlCh1] = useState("");
+  const [playerUrlCh2, setPlayerUrlCh2] = useState("");
+  const [isPlayer1Loading, setIsPlayer1Loading] = useState(false);
+  const [isPlayer2Loading, setIsPlayer2Loading] = useState(false);
 
   const playerCh1Ref = useRef(playerCh1);
   const playerCh2Ref = useRef(playerCh2);
@@ -69,8 +72,6 @@ function App() {
     }
   }
 
-  
-
   return (
     <div className="container">
       <Screen
@@ -85,6 +86,10 @@ function App() {
         <Deck
           className="column"
           player={playerCh1Ref.current}
+          playerUrl={playerUrlCh1}
+          setPlayerUrl={setPlayerUrlCh1}
+          isPlayerLoading={isPlayer1Loading}
+          setIsPlayerLoading={setIsPlayer1Loading}
           metaData={metaDataCh1}
           setMetaData={setMetaDataCh1}
           setTimeOnPlay={setTimeOnPlayCh1}
@@ -98,6 +103,10 @@ function App() {
         <Deck
           className="column"
           player={playerCh2Ref.current}
+          playerUrl={playerUrlCh2}
+          setPlayerUrl={setPlayerUrlCh2}
+          isPlayerLoading={isPlayer2Loading}
+          setIsPlayerLoading={setIsPlayer2Loading}
           setMetaData={setMetaDataCh2}
           setTimeOnPlay={setTimeOnPlayCh2}
         />
@@ -111,7 +120,15 @@ function App() {
         />
         <button type="submit">Upload XML</button>
       </form>
-      <Library playlistsArray={playlistsArray}/>
+      <Library
+        playlistsArray={playlistsArray}
+        setPlayerUrlCh1={setPlayerUrlCh1}
+        setPlayerUrlCh2={setPlayerUrlCh2}
+        setIsPlayer1Loading={setIsPlayer1Loading}
+        setIsPlayer2Loading={setIsPlayer2Loading}
+        setMetaDataCh1={setMetaDataCh1}
+        setMetaDataCh2={setMetaDataCh2}
+      />
     </div>
   );
 }
