@@ -29,6 +29,7 @@ function App() {
   async function handleSubmit(event, xmlFile) {
     event.preventDefault();
     if (!xmlFile) return;
+    // localStorage.setItem("xmlFile",event.target.files[0]);
 
     const data = await saveXML(event, xmlFile);
     console.log(data);

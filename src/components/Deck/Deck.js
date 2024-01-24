@@ -6,6 +6,7 @@ import getMetaData from "../../api/getMetaData";
 import PlayPauseButton from "./PlayPauseButton/PlayPauseButton";
 import JogWheel from "./JogWheel/JogWheel";
 import CueButton from "./CueButton/CueButton";
+import TempoSlider from "./TempoSlider/TempoSlider";
 
 export default function Deck({
   player,
@@ -79,6 +80,7 @@ export default function Deck({
       </form> */}
       <p>{isPlayerLoading && "Loading..."}</p>
       <JogWheel player={player}/>
+      <TempoSlider player={player}/>
       <CueButton player={player}/>
       <PlayPauseButton
         timeOnPlay={timeOnPlay}
