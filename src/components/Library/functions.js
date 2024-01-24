@@ -7,7 +7,7 @@ export async function handleClick(
   event,
   playlistSelected,
   setPlaylistSelected,
-  setTracksArray
+  setTracksArray,
 ) {
   const name = event.target.getAttribute("name");
   console.log(event.target.getAttribute("name"));

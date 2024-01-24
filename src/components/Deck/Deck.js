@@ -3,18 +3,25 @@ import { useState, useEffect } from "react";
 import uploadAudio from "./uploadAudio";
 import styles from "./Deck.module.css";
 import getMetaData from "../../api/getMetaData";
+import PlayPauseButton from "./PlayPauseButton/PlayPauseButton";
+import JogWheel from "./JogWheel/JogWheel";
+import CueButton from "./CueButton/CueButton";
+import TempoSlider from "./TempoSlider/TempoSlider";
 
 export default function Deck({
   player,
   metaData,
   setMetaData,
+  timeOnPlay,
   setTimeOnPlay,
+  timeElapsed,
+  setTimeElapsed,
   playerUrl,
   setPlayerUrl,
   isPlayerLoading,
   setIsPlayerLoading,
 }) {
-  const [fileData, setFileData] = useState("");
+  // const [fileData, setFileData] = useState("");
   // const [playerUrl, setPlayerUrl] = useState("");
 
   function play() {
@@ -26,19 +33,19 @@ export default function Deck({
   console.log(player.loaded);
   // console.log(metaData)
 
-  async function onSubmit(event, fileData) {
-    event.preventDefault();
-    setIsPlayerLoading(true);
+  // async function onSubmit(event, fileData) {
+  //   event.preventDefault();
+  //   setIsPlayerLoading(true);
 
-    const playerUrl = await uploadAudio(fileData);
-    // await loadTrack(fileData)
+  //   const playerUrl = await uploadAudio(fileData);
+  //   // await loadTrack(fileData)
 
-    if (playerUrl) {
-      const metaData = await getMetaData(playerUrl);
-      setMetaData(metaData);
-      setPlayerUrl(playerUrl);
-    }
-  }
+  //   if (playerUrl) {
+  //     const metaData = await getMetaData(playerUrl);
+  //     setMetaData(metaData);
+  //     setPlayerUrl(playerUrl);
+  //   }
+  // }
 
   useEffect(() => {
     if (playerUrl !== "") {
@@ -62,7 +69,7 @@ export default function Deck({
         <p>{metaData && metaData.bpm}</p>
         <p>{metaData && metaData.tonality}</p>
       </div>
-      <form name="uploadForm" onSubmit={(event) => onSubmit(event, fileData)}>
+      {/* <form name="uploadForm" onSubmit={(event) => onSubmit(event, fileData)}>
         <label htmlFor="upload">Upload</label>
         <input
           type="file"
@@ -70,11 +77,19 @@ export default function Deck({
           onChange={(event) => onChange(event, setFileData)}
         ></input>
         <button type="submit">Load</button>
-      </form>
+      </form> */}
       <p>{isPlayerLoading && "Loading..."}</p>
-      <button onClick={play} disabled={isPlayerLoading ? true : false}>
-        Play
-      </button>
+      <JogWheel player={player}/>
+      <TempoSlider player={player}/>
+      <CueButton player={player}/>
+      <PlayPauseButton
+        timeOnPlay={timeOnPlay}
+        setTimeOnPlay={setTimeOnPlay}
+        timeElapsed={timeElapsed}
+        setTimeElapsed={setTimeElapsed}
+        player={player}
+        isPlayerLoading={isPlayerLoading}
+      />
     </div>
   );
 }

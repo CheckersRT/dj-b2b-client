@@ -2,3 +2,18 @@ img {
 border: red 1px solid;
 /* object-position: 40vw; */
 }
+
+.waveform {
+    position: relative;
+    left: 40vw;
+}
+
+.scroll {
+    animation: scroll 180s infinite; 
+}
+
+@keyframes scroll {
+    from {left: 40vw;}
+    to {left: -14000px;}
+    
+}

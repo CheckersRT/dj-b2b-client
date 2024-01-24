@@ -14,6 +14,8 @@ function App() {
   const [metaDataCh2, setMetaDataCh2] = useState({});
   const [timeOnPlayCh1, setTimeOnPlayCh1] = useState(0);
   const [timeOnPlayCh2, setTimeOnPlayCh2] = useState(0);
+  const [timeElapsedCh1, setTimeElapsedCh1] = useState(0);
+  const [timeElapsedCh2, setTimeElapsedCh2] = useState(0);
   const [xmlFile, setXmlFile] = useState("");
   const [playlistsArray, setPlaylistsArray] = useState();
   const [playerUrlCh1, setPlayerUrlCh1] = useState("");
@@ -27,6 +29,7 @@ function App() {
   async function handleSubmit(event, xmlFile) {
     event.preventDefault();
     if (!xmlFile) return;
+    // localStorage.setItem("xmlFile",event.target.files[0]);
 
     const data = await saveXML(event, xmlFile);
     console.log(data);
@@ -79,8 +82,8 @@ function App() {
         metaDataCh2={metaDataCh2}
         player1={playerCh1Ref.current}
         player2={playerCh2Ref.current}
-        timeOnPlayCh1={timeOnPlayCh1}
-        timeOnPlayCh2={timeOnPlayCh2}
+        timeElapsedCh1={timeElapsedCh1}
+        timeElapsedCh2={timeElapsedCh2}
       />
       <div className="controller">
         <Deck
@@ -92,7 +95,11 @@ function App() {
           setIsPlayerLoading={setIsPlayer1Loading}
           metaData={metaDataCh1}
           setMetaData={setMetaDataCh1}
+          timeOnPlay={timeOnPlayCh1}
           setTimeOnPlay={setTimeOnPlayCh1}
+          timeElapsed={timeElapsedCh1}
+          setTimeElapsed={setTimeElapsedCh1}
+
         />
 
         <Mixer
@@ -107,8 +114,12 @@ function App() {
           setPlayerUrl={setPlayerUrlCh2}
           isPlayerLoading={isPlayer2Loading}
           setIsPlayerLoading={setIsPlayer2Loading}
+          metaData={metaDataCh2}
           setMetaData={setMetaDataCh2}
+          timeOnPlay={timeOnPlayCh2}
           setTimeOnPlay={setTimeOnPlayCh2}
+          timeElapsed={timeElapsedCh2}
+          setTimeElapsed={setTimeElapsedCh2}
         />
       </div>
       <form onSubmit={(event) => handleSubmit(event, xmlFile)}>
