@@ -25,13 +25,12 @@ export default function Waveform({ player, metaData }) {
   console.log(waveformWidth);
   // const waveformprop = `calc(-${waveformWidth}px + 40vw)`
   // console.log(waveformprop);
-  const to = "-17700px";
-  const from = "40vw";
+  const to = waveformWidth;
 
   return (
     <StyledDiv
-    $to={to}
-    $from={from}
+      $animation={isWaveformScrolling ? true : false}
+      $to={to}
       $duration={duration}
       // className={`${styles.waveform} ${isWaveformScrolling && styles.scroll}`}
     >
@@ -40,12 +39,14 @@ export default function Waveform({ player, metaData }) {
   );
 }
 
-const scroll = keyframes`
-// from {left: ${(props) => props.$from};}
-from {left: 40vw;}
 
-// to {left: -17700px;}
-to {left: ${(props) => props.$to};}
+const scroll = (from, to) => keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-${to}px + 40vw));
+  }
 `;
 
 const StyledDiv = styled.div`
@@ -53,8 +54,17 @@ const StyledDiv = styled.div`
   left: 40vw;
   background-color: blue;
 
-  animation-name: ${scroll};
-  animation-duration: ${(props) => props.$duration};
+  animation: ${props => props.animation ? 
+    props => scroll(props.$from, props.$to) : null} ${(props) => props.$duration}
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 `;
+
+// const scrollingWaveform = (from, to) => keyframes`
+//   from {
+//     left: ${from}vw
+//   }
+//   to {
+//     left: ${to}px
+//   }
+// `;
