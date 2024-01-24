@@ -1,13 +1,13 @@
 import uploadTrack from "../../api/uploadTrack";
-import getMetaData from "../../api/getMetaData";
 import saveToDb from "../../api/saveToDb";
 import isTrackInDb from "../../api/isTrackInDb";
+import getWaveformImageUrl from "./getWaveformImageUrl";
 
 export async function handleClick(
   event,
   playlistSelected,
   setPlaylistSelected,
-  setTracksArray,
+  setTracksArray
 ) {
   const name = event.target.getAttribute("name");
   console.log(event.target.getAttribute("name"));
@@ -36,20 +36,33 @@ export async function handleClickTrack(event) {
   console.log(name);
 }
 
-export async function handleLoadDeck(event, setPlayerUrl, setIsPlayerLoading, setMetaData, track) {
+export async function handleLoadDeck(
+  event,
+  setPlayerUrl,
+  setIsPlayerLoading,
+  setMetaData,
+  track
+) {
   event.stopPropagation();
   const name = event.target.getAttribute("name");
-  setIsPlayerLoading(true)
+  setIsPlayerLoading(true);
 
-  const trackInDb = await isTrackInDb(track.TrackID);
+  // const trackInDb = await isTrackInDb(track.TrackID);
 
-  if(trackInDb) {
-      setPlayerUrl(trackInDb.url)
-      setMetaData(trackInDb)
-  } else if (trackInDb === false) {
-    const data = await uploadTrack(name)
-    const url = data.url
-    setPlayerUrl(url)
+  // if (trackInDb) {
+  //   setPlayerUrl(trackInDb.url);
+  //   setMetaData(trackInDb);
+  //   console.log(trackInDb);
+  // } else if (trackInDb === false) {
+    const data = await uploadTrack(name);
+    const url = data.url;
+    const publicID = data.public_id;
+    const waveformImageUrl = await getWaveformImageUrl(
+      data.public_id,
+      track.TotalTime
+    );
+
+    setPlayerUrl(url);
 
     const metaData = {
       trackID: track.TrackID,
@@ -77,10 +90,13 @@ export async function handleLoadDeck(event, setPlayerUrl, setIsPlayerLoading, se
       tonality: track.Tonality,
       label: track.Label,
       mix: track.Mix,
-      url: data.url
-    }
-    setMetaData(metaData)
-    saveToDb(metaData)
-  }
+      url: url,
+      publicID: publicID,
+      waveformURL: waveformImageUrl,
+    };
 
+    console.log("metadata", metaData);
+    setMetaData(metaData);
+    saveToDb(metaData);
+  // }
 }

@@ -9,11 +9,14 @@ border: red 1px solid;
 }
 
 .scroll {
-    animation: scroll 180s infinite; 
+    animation-name: scroll; 
+    animation-duration: 354s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
 }
 
 @keyframes scroll {
     from {left: 40vw;}
-    to {left: -14000px;}
+    to {left: calc(-17700px + 40vw);}
     
 }

@@ -9,6 +9,7 @@ import CueButton from "./CueButton/CueButton";
 import TempoSlider from "./TempoSlider/TempoSlider";
 
 export default function Deck({
+  // clock,
   player,
   metaData,
   setMetaData,
@@ -24,11 +25,6 @@ export default function Deck({
   // const [fileData, setFileData] = useState("");
   // const [playerUrl, setPlayerUrl] = useState("");
 
-  function play() {
-    player.start();
-    setTimeOnPlay(player.immediate());
-    // cannot press play unless buffer has loaded
-  }
 
   console.log(player.loaded);
   // console.log(metaData)
@@ -52,6 +48,8 @@ export default function Deck({
       console.log("playerUrl in useEffect:", playerUrl);
 
       player.load(playerUrl);
+      setTimeElapsed(0)
+      // clock.stop()
       console.log(player.loaded);
       setIsPlayerLoading(false);
     }
@@ -61,7 +59,7 @@ export default function Deck({
     <div className={styles.container}>
       <div className={styles.info}>
         <h3>Player</h3>
-        <p>{metaData && metaData.title}</p>
+        <p>{metaData && metaData.name}</p>
         <p>{metaData && metaData.artist}</p>
         <p>{metaData && metaData.album}</p>
         <p>{metaData && metaData.track}</p>
@@ -81,7 +79,7 @@ export default function Deck({
       <p>{isPlayerLoading && "Loading..."}</p>
       <JogWheel player={player}/>
       <TempoSlider player={player}/>
-      <CueButton player={player}/>
+      <CueButton player={player} setTimeElapsed={setTimeElapsed} />
       <PlayPauseButton
         timeOnPlay={timeOnPlay}
         setTimeOnPlay={setTimeOnPlay}
