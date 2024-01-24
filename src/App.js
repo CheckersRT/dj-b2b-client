@@ -81,8 +81,8 @@ function App() {
         metaDataCh2={metaDataCh2}
         player1={playerCh1Ref.current}
         player2={playerCh2Ref.current}
-        timeOnPlayCh1={timeOnPlayCh1}
-        timeOnPlayCh2={timeOnPlayCh2}
+        timeElapsedCh1={timeElapsedCh1}
+        timeElapsedCh2={timeElapsedCh2}
       />
       <div className="controller">
         <Deck
@@ -113,6 +113,7 @@ function App() {
           setPlayerUrl={setPlayerUrlCh2}
           isPlayerLoading={isPlayer2Loading}
           setIsPlayerLoading={setIsPlayer2Loading}
+          metaData={metaDataCh2}
           setMetaData={setMetaDataCh2}
           timeOnPlay={timeOnPlayCh2}
           setTimeOnPlay={setTimeOnPlayCh2}

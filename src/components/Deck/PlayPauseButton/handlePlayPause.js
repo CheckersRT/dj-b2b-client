@@ -16,11 +16,13 @@ export default function handlePlayPause(
 
   if (player.state === "stopped") {
     setTimeOnPlay(player.immediate());
+    console.log(timeElapsed)
 
     player.start(0, timeElapsed);
   } else if (player.state === "started") {
+
     player.stop();
     setTimeElapsed(timeElapsed + (player.immediate() - timeOnPlay));
-    // console.log(timeElapsed);
+    console.log(timeElapsed + (player.immediate() - timeOnPlay));
   }
 }

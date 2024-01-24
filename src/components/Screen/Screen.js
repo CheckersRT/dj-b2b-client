@@ -7,8 +7,8 @@ export default function Screen({
   player2,
   metaDataCh1,
   metaDataCh2,
-  timeOnPlayCh1,
-  timeOnPlayCh2,
+  timeElapsedCh1,
+  timeElapsedCh2,
 }) {
 
   
@@ -18,8 +18,8 @@ export default function Screen({
           <Waveform player={player1} metaData={metaDataCh1} />
           <Waveform player={player2} metaData={metaDataCh2} />
       </div>
-      <Clock player={player1} timeOnPlay={timeOnPlayCh1} />
-      <Clock player={player2} timeOnPlay={timeOnPlayCh2} />
+      <Clock player={player1} timeElapsed={timeElapsedCh1} />
+      <Clock player={player2} timeElapsed={timeElapsedCh2} />
     </>
   );
 }

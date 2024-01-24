@@ -1,4 +1,4 @@
-import { handleClickTrack, handleLoadDeck } from "../Library/functions";
+import { handleClickTrack, handleLoadDeck } from "../../Library/functions";
 
 export default function TrackView({
   playlistName,
