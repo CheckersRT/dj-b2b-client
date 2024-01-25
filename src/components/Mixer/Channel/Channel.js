@@ -1,20 +1,25 @@
-// import GainKnob from "../GainKnob/GainKnob";
 import EqKnob from "../EqKnob/EqKnob";
 import GainKnob from "../GainKnob/GainKnob";
 import VolumeFader from "../VolumeFader/VolumeFader";
+import styled from "styled-components"
 
-// import VolumeFader from "../VolumeFader/VolumeFader";
-import styles from "./Channel.module.css";
 
-export default function Channel({ channel }) {
+export default function Channel({ className, channel }) {
   return (
-    <div className={styles.container}>
+    <Container className={className}>
       <GainKnob channel={channel} />
       <EqKnob channel={channel} param={"high"} />
       <EqKnob channel={channel} param={"mid"} />
       <EqKnob channel={channel} param={"low"} />
       {/* <FilterKnob channel={1} mixerArray={mixerArray}/> */}
       <VolumeFader channel={channel} />
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 100%;
+`

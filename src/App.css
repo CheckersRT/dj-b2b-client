@@ -4,16 +4,3 @@
   box-sizing: border-box;
   min-width: 0;
 }
-
-.container {
-  width: 80%;
-  margin: auto;
-}
-
-.controller {
-  display: grid;
-  grid-auto-flow: column;
-  border: 0.5px solid black;
-  grid-template-columns: 1fr 1fr 1fr;
-
-}

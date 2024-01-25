@@ -1,0 +1,17 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background-image: url(/public/images/TempoControl-no-handle-rotated.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px green solid;
+}
+
+.rotate {
+  height: 100%;
+  width: 100%;
+}
+
+.tempoSlider {
+}
