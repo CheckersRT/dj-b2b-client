@@ -4,7 +4,7 @@ export default function handlePlayPause(
   timeOnPlay,
   setTimeOnPlay,
   timeElapsed,
-  setTimeElapsed
+  setTimeElapsed,
 ) {
   //   if (sendReceive === "receive") {
   //     console.log("success");
@@ -18,8 +18,10 @@ export default function handlePlayPause(
     setTimeOnPlay(player.immediate());
     console.log(timeElapsed)
 
+    // clock.start()
     player.start(0, timeElapsed);
   } else if (player.state === "started") {
+    // clock.pause(player.immediate())
 
     player.stop();
     setTimeElapsed(timeElapsed + (player.immediate() - timeOnPlay));

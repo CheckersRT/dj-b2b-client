@@ -5,9 +5,11 @@ import Deck from "./components/Deck/Deck";
 import Library from "./components/Library/Library";
 import { useState, useRef } from "react";
 import createPlayer from "./utils/createPlayer";
+// import createClock from "./utils/createClock";
 
 const playerCh1 = createPlayer(1);
 const playerCh2 = createPlayer(2);
+// const clockCh1 = createClock()
 
 function App() {
   const [metaDataCh1, setMetaDataCh1] = useState({});
@@ -25,6 +27,8 @@ function App() {
 
   const playerCh1Ref = useRef(playerCh1);
   const playerCh2Ref = useRef(playerCh2);
+  // const clockCh1Ref = useRef(clockCh1)
+
 
   async function handleSubmit(event, xmlFile) {
     event.preventDefault();
@@ -88,6 +92,7 @@ function App() {
       <div className="controller">
         <Deck
           className="column"
+          // clock={clockCh1Ref.current}
           player={playerCh1Ref.current}
           playerUrl={playerUrlCh1}
           setPlayerUrl={setPlayerUrlCh1}
@@ -131,6 +136,7 @@ function App() {
         />
         <button type="submit">Upload XML</button>
       </form>
+      <div className="">
       <Library
         playlistsArray={playlistsArray}
         setPlayerUrlCh1={setPlayerUrlCh1}
@@ -140,6 +146,7 @@ function App() {
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}
       />
+      </div>
     </div>
   );
 }

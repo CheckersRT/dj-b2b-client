@@ -1,7 +1,5 @@
-import TrackView from "../Library/TrackView/TrackView";
 import TrackList from "./TrackList/TrackList";
 import PlaylistList from "./PlaylistList/PlaylistList";
-import { handleClick } from "./functions";
 import { useState } from "react";
 import styles from "./Library.module.css"
 

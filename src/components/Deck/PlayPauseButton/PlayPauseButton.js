@@ -10,7 +10,7 @@ export default function PlayPauseButton({
 }) {
   return (
     <button
-      onClick={() => handlePlayPause(player, "send", timeOnPlay, setTimeOnPlay, timeElapsed, setTimeElapsed)}
+      onClick={() => handlePlayPause( player, "send", timeOnPlay, setTimeOnPlay, timeElapsed, setTimeElapsed)}
       disabled={isPlayerLoading ? true : false}
     >
       Play/Pause
