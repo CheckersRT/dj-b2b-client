@@ -45,9 +45,7 @@ export default function Waveform({ player, metaData }) {
 
   }, [isWaveformScrolling])
 
-  function handleCancel(event) {
-    console.log(event)
-  }
+
 
   return (
     <StyledDiv
@@ -56,7 +54,7 @@ export default function Waveform({ player, metaData }) {
       $animation={isWaveformScrolling}
       $to={to}
       $duration={duration}
-      onAnimationCancel={(() => console.log("hi"))}
+      // onAnimationCancel={(() => console.log("hi"))}
       // className={`${styles.waveform} ${isWaveformScrolling && styles.scroll}`}
     >
       <img src={imageSrc} alt="waveform"></img>

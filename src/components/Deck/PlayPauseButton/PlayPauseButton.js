@@ -1,4 +1,5 @@
 import handlePlayPause from "./handlePlayPause";
+import styles from "./PlayPauseButton.module.css"
 
 export default function PlayPauseButton({
   player,
@@ -10,6 +11,7 @@ export default function PlayPauseButton({
 }) {
   return (
     <button
+      className={styles.button}
       onClick={() => handlePlayPause( player, "send", timeOnPlay, setTimeOnPlay, timeElapsed, setTimeElapsed)}
       disabled={isPlayerLoading ? true : false}
     >
