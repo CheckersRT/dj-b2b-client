@@ -128,8 +128,7 @@ function App() {
           />
           <button type="submit">Upload XML</button>
         </form>
-      </Container>
-      {/* <Library
+      <Library
         playlistsArray={playlistsArray}
         setPlayerUrlCh1={setPlayerUrlCh1}
         setPlayerUrlCh2={setPlayerUrlCh2}
@@ -137,7 +136,9 @@ function App() {
         setIsPlayer2Loading={setIsPlayer2Loading}
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}
-      /> */}
+
+      />
+      </Container>
     </>
   );
 }
@@ -148,7 +149,7 @@ export default App;
 const Container = styled.div`
 width: 90%;
 margin: auto;
-height: 75vh;
+height: 70vh;
 `
 
 const Controls = styled.div`

@@ -47,7 +47,7 @@ margin: auto;
 
 const KnobContainer = styled.div`
 margin: auto;
-padding: 0;
+padding: 9%;
 display: flex;
 align-items: center;
 background-image: url(${knobBackground});
@@ -56,13 +56,13 @@ background-size: container;
 background-repeat: no-repeat;
 
 border: 1px solid green;
-width: 80%;
+width: 50%;
 height: 100%;
 `
 
 const StyledKnob = styled.img`
 margin: auto;
-width: 65%;
+width: 100%;
 // border: 1px solid orange;
 background-color: transparent;
 `

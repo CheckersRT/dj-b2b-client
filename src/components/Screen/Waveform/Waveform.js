@@ -1,52 +1,50 @@
 // import styles from "./Waveform.module.css";
 import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import { keyframes } from "styled-components";
 import { calculateWaveFormWidth } from "../../Library/getWaveformImageUrl";
 import { gsap } from "gsap";
 
-export default function Waveform({ player, metaData }) {
-  const [isWaveformScrolling, setIsWavefromScrolling] = useState(false);
-  const [leftPositionOfWaveform, setLeftPositionOfWaveform] = useState();
+export default function Waveform({ player, metaData, timeElapsed }) {
   const [waveform, setWaveform] = useState();
+  const [imageSrc, setImageSrc] = useState("")
   const imgRef = useRef();
-  // const imageSrc = metaData.waveformURL;
-  const imageSrc =
-    "https://res.cloudinary.com/dm1n4kfee/video/upload/c_scale,h_50,w_9036/b_white,co_black,fl_waveform/16730547_Love_Letter_feat._The_Knocks_feat._The_Knocks__Original_Mix.png";
-
-  // const waveformWidth = calculateWaveFormWidth(metaData.totalTime);
-  const waveformWidth = calculateWaveFormWidth(253);
-
-  console.log(player.state)
 
   useEffect(() => {
+    const imageSrc = metaData.waveformURL;
+    setImageSrc(imageSrc);
+    const waveformWidth = calculateWaveFormWidth(metaData.totalTime);
+    const duration = metaData.totalTime
+
     const waveform = gsap.to(imgRef.current, {
-      // duration: metaData.totalTime,
-      duration: 20,
-      x: -400,
+      duration: duration,
+      x: -waveformWidth,
       paused: true,
       ease: "none",
     });
-    console.log("Paused?: ", waveform.vars.paused);
-
     setWaveform(waveform);
-  }, [imgRef]);
+  }, [imgRef, metaData]);
 
   useEffect(() => {
     if (player.state === "started") {
       waveform.play() || waveform.resume();
-    } else if (waveform && player.state === "stopped") {
+    } else if (waveform && player.state === "stopped" && timeElapsed !== 0) {
       console.log(waveform);
       waveform.pause();
+    } else if (waveform && player.state === "stopped" && timeElapsed === 0) {
+
+      waveform.restart().pause()
     }
-  }, [player.state, waveform]);
+  }, [player.state, waveform, timeElapsed]);
 
   return (
-    <>
-      <div ref={imgRef} onClick={() => waveform.paused(!waveform.paused())}>
+
+      <StyledDiv ref={imgRef} onClick={() => waveform.paused(!waveform.paused())}>
         <img src={imageSrc} alt="waveform"></img>
-      </div>
-    </>
+      </StyledDiv>
   );
 }
 
+const StyledDiv = styled.div`
+position: relative;
+left: 50%;
+`
