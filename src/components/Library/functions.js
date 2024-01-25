@@ -47,13 +47,13 @@ export async function handleLoadDeck(
   const name = event.target.getAttribute("name");
   setIsPlayerLoading(true);
 
-  // const trackInDb = await isTrackInDb(track.TrackID);
+  const trackInDb = await isTrackInDb(track.TrackID);
 
-  // if (trackInDb) {
-  //   setPlayerUrl(trackInDb.url);
-  //   setMetaData(trackInDb);
-  //   console.log(trackInDb);
-  // } else if (trackInDb === false) {
+  if (trackInDb) {
+    setPlayerUrl(trackInDb.url);
+    setMetaData(trackInDb);
+    console.log(trackInDb);
+  } else if (trackInDb === false) {
     const data = await uploadTrack(name);
     const url = data.url;
     const publicID = data.public_id;
@@ -98,5 +98,5 @@ export async function handleLoadDeck(
     console.log("metadata", metaData);
     setMetaData(metaData);
     saveToDb(metaData);
-  // }
+  }
 }
