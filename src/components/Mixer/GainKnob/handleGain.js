@@ -1,11 +1,14 @@
 import { gainCh1, gainCh2 } from "../../../utils/audioNodeSetUp";
 
-export default function handleGain(event, sendReceive, channel) {
+export default function handleGain(rotation, sendReceive, channel) {
   let gainValue;
-  if (event.target.value >= 0) {
-    gainValue = event.target.value / 2;
-  } else if (event.target.value < 0) {
-    gainValue = event.target.value * 2;
+  if (rotation >= 0) {
+    const percentage = rotation / 150;
+    gainValue = percentage * 9
+  } else if (rotation < 0) {
+    const percentage = rotation / 150;
+    gainValue = (percentage * 50);
+    
   }
 
   if (channel === 1) {

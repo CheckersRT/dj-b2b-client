@@ -1,24 +1,11 @@
 import handleGain from "./handleGain";
-import styled from "styled-components"
+import BasicKnob from "../BasicKnob/BasicKnob";
 
-export default function GainKnob({className, channel}) {
+export default function GainKnob({ className, channel }) {
 
+  const param = "gain"
   return (
-    <Container className={className}>
-      <label htmlFor={`ch${channel}-gain`}>gain</label>
-      <input
-        name={`ch${channel}-gain`}
-        id={`ch${channel}-gain`}
-        type="range"
-        min={-20}
-        max={20}
-        defaultValue={0}
-        onChange={(event) => handleGain(event,"send", channel)}
-      />
-    </Container>
+    <BasicKnob handleRotation={handleGain} channel={channel} param={param}/>
   );
 }
 
-const Container = styled.div`
-
-`
