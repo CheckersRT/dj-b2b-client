@@ -14,12 +14,19 @@ export default function handlePlayPause(
   //     socket.emit("send_playPause", { player: player.current.name });
   //   }
 
+  console.log(player.context.state)
+  if(player.context.state === "suspended") {
+    player.start()
+  }
+
   if (player.state === "stopped") {
+
     setTimeOnPlay(player.immediate());
     console.log(timeElapsed)
 
     // clock.start()
     player.start(0, timeElapsed);
+
   } else if (player.state === "started") {
     // clock.pause(player.immediate())
 

@@ -7,6 +7,8 @@ import PlayPauseButton from "./PlayPauseButton/PlayPauseButton";
 import JogWheel from "./JogWheel/JogWheel";
 import CueButton from "./CueButton/CueButton";
 import TempoSlider from "./TempoSlider/TempoSlider";
+import TrackInfo from "./TrackInfo/TrackInfo";
+import styled from "styled-components";
 
 export default function Deck({
   // clock,
@@ -24,7 +26,6 @@ export default function Deck({
 }) {
   // const [fileData, setFileData] = useState("");
   // const [playerUrl, setPlayerUrl] = useState("");
-
 
   console.log(player.loaded);
   // console.log(metaData)
@@ -48,7 +49,7 @@ export default function Deck({
       console.log("playerUrl in useEffect:", playerUrl);
 
       player.load(playerUrl);
-      setTimeElapsed(0)
+      setTimeElapsed(0);
       // clock.stop()
       console.log(player.loaded);
       setIsPlayerLoading(false);
@@ -56,31 +57,12 @@ export default function Deck({
   }, [playerUrl]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.info}>
-        <h3>Player</h3>
-        <p>{metaData && metaData.name}</p>
-        <p>{metaData && metaData.artist}</p>
-        <p>{metaData && metaData.album}</p>
-        <p>{metaData && metaData.track}</p>
-        <p>{metaData && metaData.duration}</p>
-        <p>{metaData && metaData.bpm}</p>
-        <p>{metaData && metaData.tonality}</p>
-      </div>
-      {/* <form name="uploadForm" onSubmit={(event) => onSubmit(event, fileData)}>
-        <label htmlFor="upload">Upload</label>
-        <input
-          type="file"
-          name="upload"
-          onChange={(event) => onChange(event, setFileData)}
-        ></input>
-        <button type="submit">Load</button>
-      </form> */}
-      <p>{isPlayerLoading && "Loading..."}</p>
-      <JogWheel player={player}/>
-      <TempoSlider player={player}/>
-      <CueButton player={player} setTimeElapsed={setTimeElapsed} />
-      <PlayPauseButton
+    <Container>
+      <TrackInfoGridA metaData={metaData} isPlayerLoading={isPlayerLoading} />
+      <JogWheelGridB player={player} />
+      <TempoSliderGridC player={player} />
+      <CueButtonGridD player={player} setTimeElapsed={setTimeElapsed} />
+      <PlayPauseButtonGridE
         timeOnPlay={timeOnPlay}
         setTimeOnPlay={setTimeOnPlay}
         timeElapsed={timeElapsed}
@@ -88,6 +70,36 @@ export default function Deck({
         player={player}
         isPlayerLoading={isPlayerLoading}
       />
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "a a a a a a"
+    "b b b b b b"
+    ". . . . . c"
+    "d . . . . c"
+    "e . . . . c";
+  grid-template-rows: 10% 50% 10% 15% 15%;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr;
+  height: 100%;
+`;
+
+const TrackInfoGridA = styled(TrackInfo)`
+  grid-area: a;
+`;
+const JogWheelGridB = styled(JogWheel)`
+  grid-area: b;
+`;
+const TempoSliderGridC = styled(TempoSlider)`
+  grid-area: c;
+`;
+const CueButtonGridD = styled(CueButton)`
+  grid-area: d;
+`;
+const PlayPauseButtonGridE = styled(PlayPauseButton)`
+  grid-area: e;
+`;

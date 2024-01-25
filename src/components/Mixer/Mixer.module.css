@@ -1,7 +1,14 @@
 
+.container {
+    width: 100%;
+    height: 100%;
+    border: 1px solid green;
+}
 
 .channels {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: column;
+
+    /* height: 100%; */
 }

@@ -1,13 +1,20 @@
-import {eqCh1, eqCh2} from "../../../utils/audioNodeSetUp"
+import { eqCh1, eqCh2 } from "../../../utils/audioNodeSetUp";
 
-export default function handleEq(event, channel, param, sendReceive) {
+export default function handleEq(rotation, sendReceive, channel, param) {
+  let gainValue;
+  if (rotation >= 0) {
+    const percentage = rotation / 150;
+    gainValue = percentage * 6;
+  } else if (rotation < 0) {
+    const percentage = rotation / 150;
+    gainValue = percentage * 26;
+  }
 
-    console.log(event.target.value)
-    if(channel === 1) {
-        eqCh1[param].value = event.target.value
-        console.log(eqCh1[param].value)
-    } else if(channel === 2) {
-        eqCh2[param].value = event.target.value
-        console.log(eqCh2[param].value)
-    }
+  if (channel === 1) {
+    eqCh1[param].value = gainValue;
+    console.log(eqCh1[param].value);
+  } else if (channel === 2) {
+    eqCh2[param].value = gainValue;
+    console.log(eqCh2[param].value);
+  }
 }
