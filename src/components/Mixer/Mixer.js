@@ -10,7 +10,7 @@ export default function Mixer({ className, params }) {
         <Channel channel={1} />
         <Channel channel={2} />
       </StyledChannels>
-      <Crossfader />
+      <Crossfader className={className}/>
     </StyledMixer>
   );
 }
@@ -24,9 +24,12 @@ height: 100%;
 border: 1px solid green;
 `
 const StyledChannels = styled.div`
-display: grid;
-grid-template-columns: 1fr 1fr;
-grid-auto-flow: column;
+display: flex;
+flex-direction: rows;
 border: 1px solid purple;
-height: 80%;
+height: 85%;
 `
+
+// const StyledCrossfader = styled(Crossfader)`
+// height: 20%;
+// `
