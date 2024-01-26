@@ -26,7 +26,7 @@ const StyledMixer = styled.div`
   grid-template-rows: 4fr 1fr;
   border: 1px gray solid;
   height: 75vh;
-  padding: 5% 0;
+  // padding: 5% 0;
 
 `;
 

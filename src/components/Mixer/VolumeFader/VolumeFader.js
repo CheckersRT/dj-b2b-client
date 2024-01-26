@@ -8,32 +8,32 @@ import { useRef } from "react";
 
 gsap.registerPlugin(Draggable);
 
-export default function VolumeFader({ channel }) {
-  const sliderRef = useRef();
+export default function VolumeFader({ channel, className }) {
+  const volSliderRef = useRef();
 
-  const getter = gsap.getProperty(sliderRef.current)
+  const getter = gsap.getProperty(volSliderRef.current);
 
-  Draggable.create(sliderRef.current, {
+  Draggable.create(volSliderRef.current, {
     type: "y",
     inertia: false,
     dragResistance: 0.7,
-    // bounds: {top: 14, left: 0, height: 268},
-    bounds: "#div",
+    // bounds: { top: 0, left: 0, height: 50 },
+    bounds: "#volDiv",
     onDrag: (value) => {
-      console.log(value.offsetY);
       const y = getter("y");
       console.log(y);
-      handleVolumeFader(-y, "send", channel)
+      handleVolumeFader(-y, "send", channel);
     },
   });
 
   return (
-    <Container>
+    <Container className={className}>
       <h2>{channel}</h2>
-      <SliderContainer>
-        <HandleBounds id="div">
+      <SliderContainer className={className}>
+        <HandleBounds id="volDiv">
           <StyledHandle
-            ref={sliderRef}
+            className={className}
+            ref={volSliderRef}
             alt="slider-handle"
             src={sliderHandle}
           ></StyledHandle>
@@ -44,40 +44,38 @@ export default function VolumeFader({ channel }) {
 }
 
 const Container = styled.div`
-  // height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 5px green solid;
+  height: 100%;
 `;
 
 const SliderContainer = styled.div`
-  // width: 100%;
+  width: 100%;
   // height: 100%;
-  padding: 4% 7%;
   background-image: url(${volumeSlider});
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  // border: 3px green solid;
-  overflow: hidden;
+  border: 1px green solid;
   display: flex;
   justify-content: center;
 `;
 
 const HandleBounds = styled.div`
-  margin-top: 5%;
-  margin-bottom: 5%;
-  // border: 2px solid brown;
+  border: 1px pink solid;
   display: flex;
   justify-content: center;
   width: 100%;
 `;
 
 const StyledHandle = styled.img`
-// border: 1px solid green;
-background-color: transparent;
-// position: relative;
-// margin: auto;
-height: 25%;
-width: 58%;
+  // border: 1px solid green;
+  background-color: transparent;
+  position: relative;
+  margin: auto;
+  height: 25%;
+  width: 43%;
 `;
