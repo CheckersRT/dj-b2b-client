@@ -17,23 +17,6 @@ export default function Channel({ className, channel }) {
 }
 
 const Container = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  // width: 100%;
-  // border: 2px solid black;
+
+border: 1px solid green;
   `;
-
-// const StyledGainKnob = styled(GainKnob)`
-// flex-grow: 1;
-
-// `;
-
-// const StyledEqKnob = styled(EqKnob)`
-// flex-grow: 1;
-
-// `;
-
-// const StyledVolumeSlider = styled(VolumeFader)`
-// flex-grow: 3;
-
-// `;

@@ -15,7 +15,7 @@ export default function EqKnob({channel, param, className}) {
 }
 
 const StyledBasicKnob = styled(BasicKnob)`
-width: 75%;
-border: 1px solid pink;
+// width: 75%;
+// border: 1px solid pink;
 
 `

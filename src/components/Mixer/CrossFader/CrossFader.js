@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export default function Crossfader(className) {
   return (
-    <Container className={className}r>
+    <Container className={className}>
       <label htmlFor="chAll-crossFader-fade">Crossfader</label>
       <input
         name="chAll-crossFader-fade"
@@ -20,6 +20,5 @@ export default function Crossfader(className) {
 }
 
 const Container = styled.div`
-// height: 100%;
-border: 1px solid gray;
+
 `

@@ -1,7 +1,6 @@
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { useRef } from "react";
-import handleJogWheel from "./handleJogWheel";
 import styled from "styled-components";
 import jogWheelImg from "./JockyWheel-rotated.svg";
 

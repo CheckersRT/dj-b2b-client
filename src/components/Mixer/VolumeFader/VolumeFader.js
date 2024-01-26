@@ -32,14 +32,14 @@ export default function VolumeFader({ channel }) {
 }
 
 const Container = styled.div`
-width: 75%;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-border: 1px solid green;
-margin: auto;
+// width: 75%;
+// height: 100%;
+// display: flex;
+// flex-direction: column;
+// align-items: center;
+// justify-content: center;
+// border: 1px solid green;
+// margin: auto;
 `
 
 const SliderContainer = styled.div`
