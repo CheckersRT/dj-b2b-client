@@ -5,12 +5,12 @@ import Deck from "./components/Deck/Deck";
 import Library from "./components/Library/Library";
 import { useState, useRef } from "react";
 import createPlayer from "./utils/createPlayer";
-import styled from "styled-components"
+import styled from "styled-components";
 
 const playerCh1 = createPlayer(1);
 const playerCh2 = createPlayer(2);
 
-function App() {
+function App(className) {
   const [metaDataCh1, setMetaDataCh1] = useState({});
   const [metaDataCh2, setMetaDataCh2] = useState({});
   const [timeOnPlayCh1, setTimeOnPlayCh1] = useState(0);
@@ -76,59 +76,60 @@ function App() {
   }
 
   return (
-    <>
-      <Container>
-        <Screen
-          metaDataCh1={metaDataCh1}
-          metaDataCh2={metaDataCh2}
+    <Container className={className}>
+      <Screen
+        metaDataCh1={metaDataCh1}
+        metaDataCh2={metaDataCh2}
+        player1={playerCh1Ref.current}
+        player2={playerCh2Ref.current}
+        timeElapsedCh1={timeElapsedCh1}
+        timeElapsedCh2={timeElapsedCh2}
+      />
+      <Controls className={className}>
+        <Deck
+          player={playerCh1Ref.current}
+          playerUrl={playerUrlCh1}
+          setPlayerUrl={setPlayerUrlCh1}
+          isPlayerLoading={isPlayer1Loading}
+          setIsPlayerLoading={setIsPlayer1Loading}
+          metaData={metaDataCh1}
+          setMetaData={setMetaDataCh1}
+          timeOnPlay={timeOnPlayCh1}
+          setTimeOnPlay={setTimeOnPlayCh1}
+          timeElapsed={timeElapsedCh1}
+          setTimeElapsed={setTimeElapsedCh1}
+        />
+
+        <Mixer
+          className={className}
           player1={playerCh1Ref.current}
           player2={playerCh2Ref.current}
-          timeElapsedCh1={timeElapsedCh1}
-          timeElapsedCh2={timeElapsedCh2}
         />
-        <Controls>
-          <Deck
-            player={playerCh1Ref.current}
-            playerUrl={playerUrlCh1}
-            setPlayerUrl={setPlayerUrlCh1}
-            isPlayerLoading={isPlayer1Loading}
-            setIsPlayerLoading={setIsPlayer1Loading}
-            metaData={metaDataCh1}
-            setMetaData={setMetaDataCh1}
-            timeOnPlay={timeOnPlayCh1}
-            setTimeOnPlay={setTimeOnPlayCh1}
-            timeElapsed={timeElapsedCh1}
-            setTimeElapsed={setTimeElapsedCh1}
-          />
-
-          <Mixer
-            player1={playerCh1Ref.current}
-            player2={playerCh2Ref.current}
-          />
-          <Deck
-            player={playerCh2Ref.current}
-            playerUrl={playerUrlCh2}
-            setPlayerUrl={setPlayerUrlCh2}
-            isPlayerLoading={isPlayer2Loading}
-            setIsPlayerLoading={setIsPlayer2Loading}
-            metaData={metaDataCh2}
-            setMetaData={setMetaDataCh2}
-            timeOnPlay={timeOnPlayCh2}
-            setTimeOnPlay={setTimeOnPlayCh2}
-            timeElapsed={timeElapsedCh2}
-            setTimeElapsed={setTimeElapsedCh2}
-          />
-        </Controls>
-        <form onSubmit={(event) => handleSubmit(event, xmlFile)}>
-          <label htmlFor="xmlUpload"></label>
-          <input
-            name="xmlUpload"
-            type="file"
-            onChange={(event) => setXmlFile(event.target.files[0])}
-          />
-          <button type="submit">Upload XML</button>
-        </form>
+        <Deck
+          player={playerCh2Ref.current}
+          playerUrl={playerUrlCh2}
+          setPlayerUrl={setPlayerUrlCh2}
+          isPlayerLoading={isPlayer2Loading}
+          setIsPlayerLoading={setIsPlayer2Loading}
+          metaData={metaDataCh2}
+          setMetaData={setMetaDataCh2}
+          timeOnPlay={timeOnPlayCh2}
+          setTimeOnPlay={setTimeOnPlayCh2}
+          timeElapsed={timeElapsedCh2}
+          setTimeElapsed={setTimeElapsedCh2}
+        />
+      </Controls>
+      <form onSubmit={(event) => handleSubmit(event, xmlFile)}>
+        <label htmlFor="xmlUpload"></label>
+        <input
+          name="xmlUpload"
+          type="file"
+          onChange={(event) => setXmlFile(event.target.files[0])}
+        />
+        <button type="submit">Upload XML</button>
+      </form>
       <Library
+        className={className}
         playlistsArray={playlistsArray}
         setPlayerUrlCh1={setPlayerUrlCh1}
         setPlayerUrlCh2={setPlayerUrlCh2}
@@ -136,25 +137,23 @@ function App() {
         setIsPlayer2Loading={setIsPlayer2Loading}
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}
-
       />
-      </Container>
-    </>
+    </Container>
   );
 }
 
 export default App;
 
-
 const Container = styled.div`
-width: 90%;
-margin: auto;
-height: 70vh;
-`
+  width: 90%;
+  margin: auto;
+  border: 3px pink solid;
+`;
 
 const Controls = styled.div`
- display: grid;
- grid-auto-flow: column;
- grid-template-columns: 3fr 2fr 3fr;
- height: 100%;
- `
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 3fr 2fr 3fr;
+  border: 3px blue solid;
+  height: 85vh;
+`;

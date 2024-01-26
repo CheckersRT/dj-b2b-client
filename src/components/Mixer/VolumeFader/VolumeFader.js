@@ -14,7 +14,7 @@ export default function VolumeFader({ channel }) {
   return (
     <Container>
       <h2>{channel}</h2>
-      <SliderContainer>
+      <SliderContainer>ddd
 
       </SliderContainer>
       {/* <label htmlFor={`ch${channel}-player-volume`}>Volume</label>
@@ -46,7 +46,7 @@ const SliderContainer = styled.div`
 
 background-image: url(${volumeSlider});
 background-position: center;
-background-size: container;
+background-size: contain;
 background-repeat: no-repeat;
 
 height: 100%;

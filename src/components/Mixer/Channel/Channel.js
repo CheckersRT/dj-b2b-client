@@ -17,29 +17,23 @@ export default function Channel({ className, channel }) {
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
   // width: 100%;
-  // height: 100%;
-  gap: 10%;
-  background-color: blue;
-`;
+  // border: 2px solid black;
+  `;
 
 // const StyledGainKnob = styled(GainKnob)`
-//   width: 100%;
-//   height: 15%;
-//   // background-color: blue;
+// flex-grow: 1;
+
 // `;
 
 // const StyledEqKnob = styled(EqKnob)`
-//   width: 100%;
-//   height: 15%;
+// flex-grow: 1;
+
 // `;
 
 // const StyledVolumeSlider = styled(VolumeFader)`
-//   width: 80%;
-//   background-color: red;
-//   height: 40%;
+// flex-grow: 3;
+
 // `;

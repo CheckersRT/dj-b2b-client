@@ -20,8 +20,8 @@ export default function CueButton({
 
 const StyledDiv = styled.div`
 width: 100%;
-height: 100%;
-border: 1px solid purple;
+// height: 100%;
+// border: 1px solid purple;
 `
 
 const StyledButton = styled.button`

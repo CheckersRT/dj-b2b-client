@@ -20,5 +20,6 @@ export default function Crossfader(className) {
 }
 
 const Container = styled.div`
-height: 100%;
+// height: 100%;
+border: 1px solid gray;
 `

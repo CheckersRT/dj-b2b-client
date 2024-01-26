@@ -11,6 +11,6 @@ export default function GainKnob({ className, channel }) {
 }
 
 const StyledBasicKnob = styled(BasicKnob)`
-width: 75%;
+// width: 75%;
 `
 

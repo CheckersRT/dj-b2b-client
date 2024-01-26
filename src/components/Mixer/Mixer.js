@@ -18,18 +18,18 @@ export default function Mixer({ className, params }) {
 const StyledMixer = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+justify-content: space-around;
 width: 100%;
 height: 100%;
 border: 1px solid green;
+gap: 15%;
 `
 const StyledChannels = styled.div`
 display: flex;
 flex-direction: rows;
 border: 1px solid purple;
-height: 85%;
 `
 
 // const StyledCrossfader = styled(Crossfader)`
-// height: 20%;
+
 // `

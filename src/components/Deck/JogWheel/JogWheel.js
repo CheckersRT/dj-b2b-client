@@ -1,68 +1,45 @@
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
+import { useRef } from "react";
 import handleJogWheel from "./handleJogWheel";
-// import styles from "./JogWheel.module.css";
 import styled from "styled-components";
-import jogWheel from "./JockyWheel-rotated.svg"
+import jogWheelImg from "./JockyWheel-rotated.svg";
+
+gsap.registerPlugin(Draggable);
 
 export default function JogWheel({ className, player }) {
+  const jogWheel = useRef(null);
+
+  const getter = gsap.getProperty(jogWheel.current);
+
+  Draggable.create(jogWheel.current, {
+    type: "rotation",
+    inertia: false,
+    dragResistance: 0.7,
+    onDrag: (value) => {
+      console.log(value);
+      const rotation = getter("rotation");
+      console.log(rotation);
+      // handleRotation(rotation, "send", channel, param)
+    },
+  });
+
   return (
-    <StyledDiv
-      className={className}
-      $imgUrl={"/public/images/JockyWheel-rotated.svg"}
-      $color={"transparent"}
-    >
-      <StyledJogWheel
-        className={className}
-        name={`ch${player.name}-jogWheel`}
-        id={`ch${player.name}-jogWheel`}
-        type="range"
-        min={-1}
-        max={1}
-        step={0.1}
-        defaultValue={0}
-        onChange={(event) => handleJogWheel(event, "send", player)}
-      />
+    <StyledDiv className={className}>
+      <StyledJogWheel ref={jogWheel} alt="jog wheel" src={jogWheelImg} />
     </StyledDiv>
   );
 }
 
 const StyledDiv = styled.div`
-height: 100%;
-width: 100%;
-position: relative;
-overflow: hidden;
-border: 1px solid blue;
-
-&:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-color: transparent;
-  background-image: url(${(props) => jogWheel});
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  // border: 1px solid blue;
+  display: flex;
+  justify-content: center;
 `;
 
-const StyledJogWheel = styled.input`
--webkit-appearance: none;
-appearance: none;
-position: absolute;
-margin: -85px 0px 0px 85px;
-height: 100%;
-width: 100%;
-cursor: grab;
-outline: none;
-transform: rotate(270deg);
-translate: -85px 85px;
-background-color: transparent;
-
-&::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 153px;
-  height: 600px;
-  /* background-color: red; */
-}
-`
+const StyledJogWheel = styled.img`
+  cursor: grab;
+  background-color: transparent;
+  width: 68%;
+  overflow: hidden;
+`;
