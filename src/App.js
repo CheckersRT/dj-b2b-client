@@ -87,6 +87,7 @@ function App(className) {
       />
       <Controls className={className}>
         <Deck
+          className={className}
           player={playerCh1Ref.current}
           playerUrl={playerUrlCh1}
           setPlayerUrl={setPlayerUrlCh1}
@@ -106,6 +107,7 @@ function App(className) {
           player2={playerCh2Ref.current}
         />
         <Deck
+          className={className}
           player={playerCh2Ref.current}
           playerUrl={playerUrlCh2}
           setPlayerUrl={setPlayerUrlCh2}
@@ -147,13 +149,13 @@ export default App;
 const Container = styled.div`
   width: 90%;
   margin: auto;
-  border: 3px pink solid;
+  // border: 3px pink solid;
 `;
 
 const Controls = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 3fr 2fr 3fr;
-  border: 3px blue solid;
-  height: 85vh;
+  // border: 3px blue solid;
+  height: 75vh;
 `;

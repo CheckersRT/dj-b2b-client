@@ -23,8 +23,11 @@ const StyledMixer = styled.div`
     "a b"
     "c c";
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 5fr 2fr;
+  grid-template-rows: 4fr 1fr;
   border: 1px gray solid;
+  height: 75vh;
+  padding: 5% 0;
+
 `;
 
 const StyledChannel1 = styled(Channel)`

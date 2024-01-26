@@ -1,15 +1,17 @@
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { useRef } from "react";
-import handleTempoChange from "./handleTempoChange";
+import handleTempoSlider from "./handleTempoSlider";
 import styled from "styled-components";
 import tempoSlider from "./TempoControl-no-handle.svg";
 import tempoHandle from "./TempoControl-handle.svg";
 
 gsap.registerPlugin(Draggable);
 
-export default function TempoSlider({ className, player }) {
+export default function TempoSlider({ className, channel, player }) {
   const sliderRef = useRef();
+
+  const getter = gsap.getProperty(sliderRef.current)
 
   Draggable.create(sliderRef.current, {
     type: "y",
@@ -18,10 +20,10 @@ export default function TempoSlider({ className, player }) {
     // bounds: {top: 14, left: 0, height: 268},
     bounds: "#div",
     onDrag: (value) => {
-      console.log(value.offsetY);
-      // const rotation = getter("rotation");
-      // console.log(rotation);
-      // handleRotation(rotation, "send", channel, param)
+      // console.log(value.offsetY);
+      const y = getter("y");
+      console.log(y);
+      handleTempoSlider(y, "send", channel, player)
     },
   });
 
@@ -32,7 +34,7 @@ export default function TempoSlider({ className, player }) {
           ref={sliderRef}
           alt="tempo slider"
           src={tempoHandle}
-          onDrag={(event) => handleTempoChange(event.target.value, player)}
+          // onDrag={(event) => handleTempoChange(event.target.value, player)}
         ></StyledSlider>
       </HandleBounds>
     </StyledDiv>

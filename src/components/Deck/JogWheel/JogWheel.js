@@ -3,6 +3,7 @@ import { Draggable } from "gsap/Draggable";
 import { useRef } from "react";
 import styled from "styled-components";
 import jogWheelImg from "./JockyWheel-rotated.svg";
+import handleJogWheel from "./handleJogWheel";
 
 gsap.registerPlugin(Draggable);
 
@@ -19,7 +20,7 @@ export default function JogWheel({ className, player }) {
       console.log(value);
       const rotation = getter("rotation");
       console.log(rotation);
-      // handleRotation(rotation, "send", channel, param)
+      handleJogWheel(rotation, "send", player)
     },
   });
 

@@ -36,13 +36,13 @@ export default function BasicKnob({ handleRotation, channel, className, param })
 
 const Container = styled.div`
 // height: 10%;
-// width: 100%;
+width: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-border: 1px solid green;
-margin: auto;
+// border: 1px solid green;
+// margin: auto;
 `;
 
 const KnobName = styled.p`
@@ -50,17 +50,17 @@ font-size: 0.6em;`
 
 const KnobContainer = styled.div`
 margin: auto;
-// padding: 35%;
+padding: 9%;
 display: flex;
 align-items: center;
 background-image: url(${knobBackground});
 background-position: center;
-background-size: container;
+background-size: contain;
 background-repeat: no-repeat;
 
-border: 1px solid blue;
-// width: 100%;
-// height: 100%;
+// border: 1px solid blue;
+width: 100%;
+height: 100%;
 `
 
 const StyledKnob = styled.img`
