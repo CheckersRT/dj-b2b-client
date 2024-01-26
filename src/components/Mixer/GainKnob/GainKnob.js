@@ -4,13 +4,13 @@ import styled from "styled-components"
 
 export default function GainKnob({ className, channel }) {
 
-  const param = "gain"
+  const param = "GAIN"
   return (
     <StyledBasicKnob className={className} handleRotation={handleGain} channel={channel} param={param}/>
   );
 }
 
 const StyledBasicKnob = styled(BasicKnob)`
-width: 75%;
+// width: 75%;
 `
 

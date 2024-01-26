@@ -1,11 +1,11 @@
 import handleCrossFader from "./handleCrossFader";
 import styled from "styled-components"
 
-export default function Crossfader(className) {
+export default function Crossfader({className}) {
   return (
     <Container className={className}>
       <label htmlFor="chAll-crossFader-fade">Crossfader</label>
-      <input
+      <StyledInput
         name="chAll-crossFader-fade"
         id="chAll-crossFader-fade"
         type="range"
@@ -20,5 +20,10 @@ export default function Crossfader(className) {
 }
 
 const Container = styled.div`
+  border: pink 1px solid;
+  width: 100%;
+`
 
+const StyledInput = styled.input`
+width: 100%;
 `
