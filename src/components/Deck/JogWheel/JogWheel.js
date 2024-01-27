@@ -35,11 +35,14 @@ const StyledDiv = styled.div`
   // border: 1px solid blue;
   display: flex;
   justify-content: center;
+  overflow: visible;
 `;
 
 const StyledJogWheel = styled.img`
   cursor: grab;
   background-color: transparent;
-  width: 68%;
+  object-fit: cover;
+  width: 65%;
+  padding-top: 10px;
   overflow: hidden;
 `;
