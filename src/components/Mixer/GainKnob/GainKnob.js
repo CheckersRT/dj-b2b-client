@@ -3,9 +3,11 @@ import BasicKnob from "../BasicKnob/BasicKnob";
 
 export default function GainKnob({ className, channel }) {
 
-  const param = "gain"
+  const param = "GAIN"
   return (
-    <BasicKnob handleRotation={handleGain} channel={channel} param={param}/>
+    <BasicKnob className={className} handleRotation={handleGain} channel={channel} param={param}/>
   );
 }
+
+
 

@@ -18,6 +18,6 @@ export default function TrackInfo({ className, metaData, isPlayerLoading }) {
 
 const StyledDiv = styled.div`
 width: 100%;
-height: 100%;
-border: 1px red solid;
+// height: 100%;
+// border: 1px red solid;
 `

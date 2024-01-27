@@ -1,63 +1,73 @@
-import handleTempoChange from "./handleTempoChange";
-import styled from "styled-components"
-import tempoSlider from "./TempoControl-no-handle.svg"
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
+import { useRef } from "react";
+import handleTempoSlider from "./handleTempoSlider";
+import styled from "styled-components";
+import tempoSlider from "./TempoControl-no-handle.svg";
+import tempoHandle from "./TempoControl-handle.svg";
 
-export default function TempoSlider({ className, player }) {
+gsap.registerPlugin(Draggable);
+
+export default function TempoSlider({ className, channel, player }) {
+  const sliderRef = useRef();
+
+  const getter = gsap.getProperty(sliderRef.current)
+
+  Draggable.create(sliderRef.current, {
+    type: "y",
+    inertia: false,
+    dragResistance: 0.7,
+    // bounds: {top: 14, left: 0, height: 268},
+    bounds: "#div",
+    onDrag: (value) => {
+      // console.log(value.offsetY);
+      const y = getter("y");
+      console.log(y);
+      handleTempoSlider(y, "send", channel, player)
+    },
+  });
+
   return (
     <StyledDiv className={className}>
+      <HandleBounds id="div">
         <StyledSlider
-          className={className}
-          name="tempoSlider"
-          min={-0.06}
-          max={0.06}
-          step={0.01}
-          defaultValue={0}
-          type="range"
-          onChange={(event) => handleTempoChange(event.target.value, player)}
+          ref={sliderRef}
+          alt="tempo slider"
+          src={tempoHandle}
         ></StyledSlider>
+      </HandleBounds>
     </StyledDiv>
   );
 }
 
 const StyledDiv = styled.div`
-height: 100%;
-width: 100%;
-padding: 0px 0px;
-background-image: url(${tempoSlider});
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center;
-border: 3px green solid;
-overflow: hidden;
-`
+  width: 100%;
+  padding: 0px 0px;
+  background-image: url(${tempoSlider});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px green solid;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+`;
 
-const StyledSlider = styled.input`
--webkit-appearance: none;
-border: 1px solid green;
-background-color: transparent;
-appearance: none;
-position: relative;
-margin: auto;
-width: 100%;
-top: 47%;
+const HandleBounds = styled.div`
+  margin-top: 10%;
+  margin-bottom: 27%;
+  border: 2px solid pink;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
 
-&::-webkit-slider-runnable-track {
-    // appearance: none;
-    // background-color: red;
-    transform: rotate(90deg);
-  }
-
-&::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20%;
-    height: 60px;
-    // transform: translate(-3.5px, -3px);
-    background-image: url(/images/TempoControl-handle-rotated.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  }
-  
-
-`
+const StyledSlider = styled.img`
+  // border: 1px solid green;
+  background-color: transparent;
+  position: relative;
+  left: 3%;
+  margin: auto;
+  height: 25%;
+  width: 51%;
+`;

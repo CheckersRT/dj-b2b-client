@@ -12,6 +12,7 @@ import styled from "styled-components";
 
 export default function Deck({
   // clock,
+  className,
   player,
   metaData,
   setMetaData,
@@ -57,12 +58,13 @@ export default function Deck({
   }, [playerUrl]);
 
   return (
-    <Container>
-      <TrackInfoGridA metaData={metaData} isPlayerLoading={isPlayerLoading} />
-      <JogWheelGridB player={player} />
-      <TempoSliderGridC player={player} />
-      <CueButtonGridD player={player} setTimeElapsed={setTimeElapsed} />
+    <Container className={className}>
+      <TrackInfoGridA className={className} metaData={metaData} isPlayerLoading={isPlayerLoading} />
+      <JogWheelGridB className={className} player={player} />
+      <TempoSliderGridC className={className} player={player} />
+      <CueButtonGridD className={className} player={player} setTimeElapsed={setTimeElapsed} />
       <PlayPauseButtonGridE
+      className={className}
         timeOnPlay={timeOnPlay}
         setTimeOnPlay={setTimeOnPlay}
         timeElapsed={timeElapsed}
@@ -83,9 +85,13 @@ const Container = styled.div`
     ". . . . . c"
     "d . . . . c"
     "e . . . . c";
-  grid-template-rows: 10% 50% 10% 15% 15%;
+  grid-template-rows: 1fr 6fr 1fr 2fr 2fr;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr;
-  height: 100%;
+  height: 75vh;
+  padding: 0 3% 2% 3%;
+  border: 1px gray solid;
+  ;
+
 `;
 
 const TrackInfoGridA = styled(TrackInfo)`

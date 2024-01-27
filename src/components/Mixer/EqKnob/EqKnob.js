@@ -1,15 +1,13 @@
 import handleEq from "./handleEq";
 import {gsap} from "gsap"
 import {Draggable} from "gsap/Draggable"
-import styles from "./EqKnob.module.css"
-import {useRef} from "react"
-import BasicKnob from "../BasicKnob/BasicKnob";
+import BasicKnob from "../BasicKnob/BasicKnob"
 
 gsap.registerPlugin(Draggable)
 
-export default function EqKnob({channel, param}) {
+export default function EqKnob({channel, param, className}) {
 
   return (
-    <BasicKnob param={param} channel={channel} handleRotation={handleEq}/>
+    <BasicKnob className={className} param={param} channel={channel} handleRotation={handleEq}/>
   );
 }

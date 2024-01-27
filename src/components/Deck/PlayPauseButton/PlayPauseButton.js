@@ -25,8 +25,8 @@ export default function PlayPauseButton({
 
 const StyledDiv = styled.div`
 width: 100%;
-height: 100%;
-border: 1px solid yellow;
+// height: 100%;
+// border: 1px solid yellow;
 
 `
 const StyledButton = styled.button`
