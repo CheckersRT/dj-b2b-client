@@ -28,19 +28,17 @@ const StyledMixer = styled.div`
   height: 100%;
   width: 100%;
   padding: 3% 0;
+  row-gap: 2%;
 `;
 
 const StyledChannel1 = styled(ChannelMk2)`
   grid-area: a;
-
 `;
 const StyledChannel2 = styled(ChannelMk2)`
   grid-area: b;
-
 `;
 
 const StyledCrossFader = styled(CrossFader)`
   grid-area: c;
-  border: 1px pink solid;
-  width: 100%;
+  // border: 1px pink solid;
 `;
