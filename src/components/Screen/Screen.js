@@ -3,6 +3,7 @@ import Waveform from "./Waveform/Waveform";
 import styles from "./Screen.module.css";
 
 export default function Screen({
+  className,
   player1,
   player2,
   metaDataCh1,
@@ -11,7 +12,7 @@ export default function Screen({
   timeElapsedCh2,
 }) {
   return (
-    <>
+    <div className={className}>
       <div className={styles.container}>
         <Waveform
           player={player1}
@@ -26,6 +27,6 @@ export default function Screen({
       </div>
       <Clock player={player1} timeElapsed={timeElapsedCh1} />
       <Clock player={player2} timeElapsed={timeElapsedCh2} />
-    </>
+    </div>
   );
 }

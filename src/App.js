@@ -78,6 +78,7 @@ function App(className) {
   return (
     <Container className={className}>
       <Screen
+      className={className}
         metaDataCh1={metaDataCh1}
         metaDataCh2={metaDataCh2}
         player1={playerCh1Ref.current}
