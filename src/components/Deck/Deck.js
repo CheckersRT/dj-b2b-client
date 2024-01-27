@@ -88,7 +88,7 @@ const Container = styled.div`
   grid-template-rows: 1fr 6fr 1fr 2fr 2fr;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr;
   height: 75vh;
-  padding: 0 3% 2% 3%;
+  padding: 2% 3% 2% 3%;
   border: 1px gray solid;
   ;
 
@@ -96,16 +96,26 @@ const Container = styled.div`
 
 const TrackInfoGridA = styled(TrackInfo)`
   grid-area: a;
+  // grid-row: 1;
+  // grid-column: 1 / -1;
 `;
 const JogWheelGridB = styled(JogWheel)`
   grid-area: b;
+  // grid-row: 2;
+  // grid-column: 1 / -1;
 `;
 const TempoSliderGridC = styled(TempoSlider)`
   grid-area: c;
+  // grid-row: 3 / -1;
+  // grid-column: 5 / 6:
 `;
 const CueButtonGridD = styled(CueButton)`
   grid-area: d;
+// grid-row: 4;
+// grid-column: 1;
 `;
 const PlayPauseButtonGridE = styled(PlayPauseButton)`
   grid-area: e;
+  // grid-row: 5;
+  // grid-column: 1;
 `;

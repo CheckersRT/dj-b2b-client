@@ -47,7 +47,7 @@ const StyledDiv = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  border: 1px green solid;
+  // border: 1px green solid;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -56,7 +56,7 @@ const StyledDiv = styled.div`
 const HandleBounds = styled.div`
   margin-top: 10%;
   margin-bottom: 27%;
-  border: 2px solid pink;
+  // border: 2px solid pink;
   display: flex;
   justify-content: center;
   width: 100%;

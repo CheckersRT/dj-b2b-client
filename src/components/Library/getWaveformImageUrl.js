@@ -3,7 +3,7 @@ export default async function getWaveformImageUrl(publicID, trackDurationInSecon
   // const waveformWidth = 14000
   console.log("Waveformwidth: ", waveformWidth);
   const baseUrl = "https://res.cloudinary.com/dm1n4kfee/video/upload/";
-  const waveformSettings = `c_scale,h_50,w_${waveformWidth}/b_white,co_black,fl_waveform/`;
+  const waveformSettings = `c_scale,h_45,w_${waveformWidth}/b_white,co_black,fl_waveform/`;
 //   const fileName = "16509589_Machines__Original";
   const fileName = publicID;
   const waveformImageUrl = baseUrl + waveformSettings + fileName + ".png";

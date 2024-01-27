@@ -36,10 +36,9 @@ export default function Waveform({ player, metaData, timeElapsed }) {
     }
   }, [player.state, waveform, timeElapsed]);
 
-  return (
-
+  return (    
       <StyledDiv ref={imgRef} onClick={() => waveform.paused(!waveform.paused())}>
-        <img src={imageSrc} alt="waveform"></img>
+        {imageSrc ? <img src={imageSrc} alt="waveform"></img> : null}
       </StyledDiv>
   );
 }
@@ -47,4 +46,5 @@ export default function Waveform({ player, metaData, timeElapsed }) {
 const StyledDiv = styled.div`
 position: relative;
 left: 50%;
+// border: 1px pink solid;
 `

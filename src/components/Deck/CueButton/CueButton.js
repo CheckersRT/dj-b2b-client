@@ -13,7 +13,9 @@ export default function CueButton({
       <StyledButton
         className={className}
         onClick={() => handleCue(player, setTimeElapsed) }
-      ></StyledButton>
+      >
+        <RingLight></RingLight>
+      </StyledButton>
     </StyledDiv>
   );
 }
@@ -35,4 +37,16 @@ background-repeat: no-repeat;
 background-size: contain;
 background-position: center;
 background-color: white;
+
+
+
 `
+
+const RingLight = styled.div`
+  width: 76%;
+  height: 91%;
+  margin: auto;
+  border: #fadc5a 5px solid;
+  border-radius: 50%;
+  // background-color: transparent;
+`;
