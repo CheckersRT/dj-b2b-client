@@ -21,6 +21,7 @@ export default function BasicKnob({
     type: "rotation",
     inertia: false,
     dragResistance: 0.7,
+    bounds: {minRotation: -150, maxRotation: 150},
     onDrag: (value) => {
       console.log(value);
       const rotation = getter("rotation");
@@ -29,9 +30,11 @@ export default function BasicKnob({
     },
   });
 
+  const label = param.toUpperCase()
+
   return (
     <Container>
-      <KnobName>{param}</KnobName>
+      <KnobName>{label}</KnobName>
       <KnobContainer>
         <StyledKnob ref={knob} alt="knob" src={knobImage}></StyledKnob>
       </KnobContainer>
@@ -41,11 +44,11 @@ export default function BasicKnob({
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
+  width: 67%;
   height: 100%;
   flex-direction: column;
   align-items: center;
-  border: 1px solid green;
+  // border: 1px solid green;
 `;
 
 const KnobName = styled.p`
@@ -65,7 +68,8 @@ background-repeat: no-repeat;
 `;
 
 const StyledKnob = styled.img`
-width: 36px;
-transform: translateX(1px)
+min-width: 54%;
+max-width: 54%;
+transform: translateX(0.5%)
 
 `;

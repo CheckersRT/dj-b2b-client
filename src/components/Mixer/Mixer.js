@@ -1,12 +1,6 @@
-import Channel from "./Channel/Channel";
-// import styles from "./Mixer.module.css";
 import CrossFader from "./CrossFader/CrossFader";
 import styled from "styled-components";
-import EqKnob from "./EqKnob/EqKnob";
-import GainKnob from "./GainKnob/GainKnob";
-import VolumeFader from "./VolumeFader/VolumeFader";
-import BasicKnob from "./BasicKnob/BasicKnob";
-import VolumeFaderMk2 from "./VolumeFaderMk2/VolumeFaderMk2";
+
 import ChannelMk2 from "./ChannelMk2/ChannelMk2";
 
 export default function Mixer({ className, params }) {
@@ -29,10 +23,11 @@ const StyledMixer = styled.div`
     "c c";
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 6fr 1fr;
+  justify-items: center;
   border: 1px gray solid;
-  max-height: 100%;
+  height: 100%;
   width: 100%;
-  // padding: 5% 0;
+  padding: 3% 0;
 `;
 
 const StyledChannel1 = styled(ChannelMk2)`

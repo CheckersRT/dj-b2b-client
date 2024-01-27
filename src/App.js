@@ -148,9 +148,9 @@ export default App;
 
 const Container = styled.div`
   width: 90%;
-  height: 100%;
   margin: auto;
   // border: 3px pink solid;
+  height: 75vh;
 `;
 
 const Controls = styled.div`
@@ -158,5 +158,5 @@ const Controls = styled.div`
   grid-auto-flow: column;
   grid-template-columns: 3fr 2fr 3fr;
   // border: 3px blue solid;
-  max-height: 100%;
+  height: 100%;
 `;
