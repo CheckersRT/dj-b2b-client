@@ -63,8 +63,8 @@ export default function Deck({
         metaData={metaData}
         isPlayerLoading={isPlayerLoading}
       />
-      <JogWheelGridB className={className} player={player} />
-      <TempoSliderGridC className={className} player={player} />
+      <JogWheelGridB className={className} player={player} waveform={waveform}/>
+      <TempoSliderGridC className={className} player={player} waveform={waveform}/>
       <CueButtonGridD
         className={className}
         player={player}
