@@ -41,13 +41,20 @@ export async function handleLoadDeck(
   setPlayerUrl,
   setIsPlayerLoading,
   setMetaData,
-  track
+  track,
+  waveform
 ) {
   event.stopPropagation();
   const name = event.target.getAttribute("name");
   setIsPlayerLoading(true);
 
   const trackInDb = await isTrackInDb(track.TrackID);
+
+  if (waveform) {
+    console.log("this is coming through yay");
+    waveform.restart().pause();
+    // waveform.kill()
+  }
 
   if (trackInDb) {
     setPlayerUrl(trackInDb.url);

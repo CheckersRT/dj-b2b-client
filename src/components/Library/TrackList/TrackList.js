@@ -11,6 +11,8 @@ export default function TrackList({
   setIsPlayer1Loading,
   setIsPlayer2Loading,
   playlist,
+  waveformCh1,
+  waveformCh2,
 }) {
   console.log("Playlist: ", playlist);
   return (
@@ -34,7 +36,8 @@ export default function TrackList({
                       setPlayerUrlCh1,
                       setIsPlayer1Loading,
                       setMetaDataCh1,
-                      track
+                      track,
+                      waveformCh1,
                     )
                   }
                 >
@@ -48,7 +51,8 @@ export default function TrackList({
                       setPlayerUrlCh2,
                       setIsPlayer2Loading,
                       setMetaDataCh2,
-                      track
+                      track,
+                      waveformCh2,
                     )
                   }
                 >

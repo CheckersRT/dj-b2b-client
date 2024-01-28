@@ -11,6 +11,8 @@ export default function Screen({
   metaDataCh2,
   timeElapsedCh1,
   timeElapsedCh2,
+  waveformCh1,
+  waveformCh2,
   setWaveformCh1,
   setWaveformCh2,
 }) {
@@ -19,13 +21,15 @@ export default function Screen({
       {/* <div className={styles.container}> */}
       <PlaybackLine className={className}></PlaybackLine>
       <Waveform
-      className={className}
-      setWaveform={setWaveformCh1}
+        className={className}
+        waveform={waveformCh1}
+        setWaveform={setWaveformCh1}
         metaData={metaDataCh1}
       />
       <Waveform
-      className={className}
-      setWaveform={setWaveformCh2}
+        className={className}
+        waveform={waveformCh2}
+        setWaveform={setWaveformCh2}
         metaData={metaDataCh2}
       />
       {/* </div> */}
@@ -37,6 +41,7 @@ export default function Screen({
 
 const Container = styled.div`
   height: 22%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

@@ -23,8 +23,8 @@ function App(className) {
   const [playerUrlCh2, setPlayerUrlCh2] = useState("");
   const [isPlayer1Loading, setIsPlayer1Loading] = useState(false);
   const [isPlayer2Loading, setIsPlayer2Loading] = useState(false);
-  const [waveformCh1, setWaveformCh1] = useState();
-  const [waveformCh2, setWaveformCh2] = useState();
+  const [waveformCh1, setWaveformCh1] = useState({});
+  const [waveformCh2, setWaveformCh2] = useState({});
 
 
   const playerCh1Ref = useRef(playerCh1);
@@ -88,6 +88,8 @@ function App(className) {
         player2={playerCh2Ref.current}
         timeElapsedCh1={timeElapsedCh1}
         timeElapsedCh2={timeElapsedCh2}
+        waveformCh1={waveformCh1}
+        waveformCh2={waveformCh2}
         setWaveformCh1={setWaveformCh1}
         setWaveformCh2={setWaveformCh2}
       />
@@ -147,6 +149,8 @@ function App(className) {
         setIsPlayer2Loading={setIsPlayer2Loading}
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}
+        waveformCh1={waveformCh1}
+        waveformCh2={waveformCh2}
       />
     </Container>
   );

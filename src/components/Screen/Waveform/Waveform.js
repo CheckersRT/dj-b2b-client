@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 
 export default function Waveform({
   metaData,
+  waveform,
   setWaveform,
 }) {
   const [imageSrc, setImageSrc] = useState("");
@@ -17,16 +18,21 @@ export default function Waveform({
     const waveformWidth = calculateWaveFormWidth(metaData.totalTime);
     const duration = metaData.totalTime;
 
-    const waveform = gsap.to(imgRef.current, {
+    // if(waveform) {
+    //   waveform.kill();
+    // }
+
+    const waveformAnimation = gsap.to(imgRef.current, {
       duration: duration,
       x: -waveformWidth,
       paused: true,
       ease: "none",
     });
-    setWaveform(waveform);
-  }, [imgRef, metaData]);
+    setWaveform(waveformAnimation);
+  }, [imgRef, metaData, setWaveform]);
 
   return (
+    // <>
     <StyledDiv ref={imgRef} 
     // onClick={() => waveform.paused(!waveform.paused())}
     >
