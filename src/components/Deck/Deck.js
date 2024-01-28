@@ -24,6 +24,7 @@ export default function Deck({
   setPlayerUrl,
   isPlayerLoading,
   setIsPlayerLoading,
+  waveform,
 }) {
   // const [fileData, setFileData] = useState("");
   // const [playerUrl, setPlayerUrl] = useState("");
@@ -48,29 +49,38 @@ export default function Deck({
   useEffect(() => {
     if (playerUrl !== "") {
       console.log("playerUrl in useEffect:", playerUrl);
-
       player.load(playerUrl);
       setTimeElapsed(0);
-      // clock.stop()
       console.log(player.loaded);
       setIsPlayerLoading(false);
     }
-  }, [playerUrl]);
+  }, [playerUrl, setTimeElapsed, setIsPlayerLoading]);
 
   return (
     <Container className={className}>
-      <TrackInfoGridA className={className} metaData={metaData} isPlayerLoading={isPlayerLoading} />
+      <TrackInfoGridA
+        className={className}
+        metaData={metaData}
+        isPlayerLoading={isPlayerLoading}
+      />
       <JogWheelGridB className={className} player={player} />
       <TempoSliderGridC className={className} player={player} />
-      <CueButtonGridD className={className} player={player} setTimeElapsed={setTimeElapsed} />
+      <CueButtonGridD
+        className={className}
+        player={player}
+        setTimeElapsed={setTimeElapsed}
+        timeElapsed={timeElapsed}
+        waveform={waveform}
+      />
       <PlayPauseButtonGridE
-      className={className}
+        className={className}
         timeOnPlay={timeOnPlay}
         setTimeOnPlay={setTimeOnPlay}
         timeElapsed={timeElapsed}
         setTimeElapsed={setTimeElapsed}
         player={player}
         isPlayerLoading={isPlayerLoading}
+        waveform={waveform}
       />
     </Container>
   );
@@ -90,8 +100,6 @@ const Container = styled.div`
   height: 75vh;
   padding: 2% 3% 2% 3%;
   border: 1px gray solid;
-  ;
-
 `;
 
 const TrackInfoGridA = styled(TrackInfo)`
@@ -111,8 +119,8 @@ const TempoSliderGridC = styled(TempoSlider)`
 `;
 const CueButtonGridD = styled(CueButton)`
   grid-area: d;
-// grid-row: 4;
-// grid-column: 1;
+  // grid-row: 4;
+  // grid-column: 1;
 `;
 const PlayPauseButtonGridE = styled(PlayPauseButton)`
   grid-area: e;

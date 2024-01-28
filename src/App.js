@@ -23,6 +23,9 @@ function App(className) {
   const [playerUrlCh2, setPlayerUrlCh2] = useState("");
   const [isPlayer1Loading, setIsPlayer1Loading] = useState(false);
   const [isPlayer2Loading, setIsPlayer2Loading] = useState(false);
+  const [waveformCh1, setWaveformCh1] = useState();
+  const [waveformCh2, setWaveformCh2] = useState();
+
 
   const playerCh1Ref = useRef(playerCh1);
   const playerCh2Ref = useRef(playerCh2);
@@ -85,6 +88,8 @@ function App(className) {
         player2={playerCh2Ref.current}
         timeElapsedCh1={timeElapsedCh1}
         timeElapsedCh2={timeElapsedCh2}
+        setWaveformCh1={setWaveformCh1}
+        setWaveformCh2={setWaveformCh2}
       />
       <Controls className={className}>
         <Deck
@@ -100,6 +105,7 @@ function App(className) {
           setTimeOnPlay={setTimeOnPlayCh1}
           timeElapsed={timeElapsedCh1}
           setTimeElapsed={setTimeElapsedCh1}
+          waveform={waveformCh1}
         />
 
         <Mixer
@@ -120,6 +126,7 @@ function App(className) {
           setTimeOnPlay={setTimeOnPlayCh2}
           timeElapsed={timeElapsedCh2}
           setTimeElapsed={setTimeElapsedCh2}
+          waveform={waveformCh2}
         />
       </Controls>
       <form onSubmit={(event) => handleSubmit(event, xmlFile)}>

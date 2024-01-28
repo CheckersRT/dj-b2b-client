@@ -5,6 +5,7 @@ export default function handlePlayPause(
   setTimeOnPlay,
   timeElapsed,
   setTimeElapsed,
+  waveform,
 ) {
   //   if (sendReceive === "receive") {
   //     console.log("success");
@@ -26,6 +27,7 @@ export default function handlePlayPause(
 
     // clock.start()
     player.start(0, timeElapsed);
+    waveform.play() || waveform.resume();
 
   } else if (player.state === "started") {
     // clock.pause(player.immediate())
@@ -33,5 +35,6 @@ export default function handlePlayPause(
     player.stop();
     setTimeElapsed(timeElapsed + (player.immediate() - timeOnPlay));
     console.log(timeElapsed + (player.immediate() - timeOnPlay));
+    waveform.pause()
   }
 }

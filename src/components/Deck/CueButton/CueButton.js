@@ -2,17 +2,34 @@ import handleCue from "./handleCue";
 // import styles from "./CueButton.module.css"
 import styled from "styled-components"
 import Cue from "./cue.svg"
+import { useEffect, useState } from "react";
+import { TimeBaseClass } from "tone/build/esm/core/type/TimeBase";
 
 export default function CueButton({
   player,
+  timeElapsed,
   setTimeElapsed,
-  className
+  className,
+  waveform,
 }) {
+const [playOnHold, setPlayOnHold] = useState(false)
+
+useEffect(() => {
+  if(playOnHold) {
+    player.start(0,0)
+    waveform.play()
+  }
+
+
+}, [playOnHold, player])
+
   return (
     <StyledDiv className={className}>
       <StyledButton
         className={className}
-        onClick={() => handleCue(player, setTimeElapsed) }
+        onClick={() => handleCue(player, setTimeElapsed, timeElapsed, waveform) }
+        onMouseDown={() => setPlayOnHold(true)}
+        onMouseUp={() => setPlayOnHold(false)}
       >
         <RingLight></RingLight>
       </StyledButton>

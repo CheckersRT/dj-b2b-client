@@ -11,6 +11,7 @@ export default function PlayPauseButton({
   setTimeElapsed,
   isPlayerLoading,
   className,
+  waveform,
 }) {
   console.log("Player.state: ", player.state);
 
@@ -25,7 +26,8 @@ export default function PlayPauseButton({
             timeOnPlay,
             setTimeOnPlay,
             timeElapsed,
-            setTimeElapsed
+            setTimeElapsed,
+            waveform
           )
         }
         disabled={isPlayerLoading ? true : false}

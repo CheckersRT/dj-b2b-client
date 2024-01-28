@@ -1,4 +1,4 @@
-export default function handleCue(player, setTimeElapsed) {
+export default function handleCue(player, setTimeElapsed, timeElapsed, waveform) {
   //   if (sendReceive === "receive") {
   //     console.log("success");
   //   }
@@ -8,4 +8,6 @@ export default function handleCue(player, setTimeElapsed) {
   //   }
   player.stop().restart(0, 0, 0)
   setTimeElapsed(0)
+  waveform.restart().pause()
+  console.log("timeElapsed set", timeElapsed)
 }
