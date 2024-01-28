@@ -1,22 +1,23 @@
 import * as Tone from "tone"
 // import transport from "./position"
 
-export default function handleJogWheel(rotation, sendReceive, player, waveform) {
+export default function handleJogWheel(rotation, sendReceive, player, waveform, tempoChangePercentage) {
     // player.seek(`+${event.target.value}`, 0)
 
     console.log("Rotation: ", rotation)
+    const originalPlaybackRate = 1 + tempoChangePercentage
 
-    const newPlaybackRate = 1 + (rotation / 200) * player.playbackRate;
+    const newPlaybackRate = player.playbackRate + (rotation / 1000) * player.playbackRate;
     console.log("newPlaybackRate: ", newPlaybackRate)
     player.playbackRate = newPlaybackRate;
     waveform.timeScale(newPlaybackRate)
     
 
     setTimeout(()=> {
-        player.playbackRate = 1
+        player.playbackRate = originalPlaybackRate
         waveform.timeScale(1)
 
-    }, 500)
+    }, 400)
 
     // console.log(event.target.value)
 

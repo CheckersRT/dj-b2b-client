@@ -54,7 +54,7 @@ min-width: 100px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  border: 1px green solid;
+  // border: 1px green solid;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -63,14 +63,14 @@ min-width: 100px;
 const HandleBounds = styled.div`
   margin-top: 10%;
   margin-bottom: 27%;
-  border: 2px solid pink;
+  // border: 2px solid pink;
   display: flex;
   justify-content: center;
   width: 100%;
 `;
 
 const StyledSlider = styled.img`
-  border: 1px solid green;
+  // border: 1px solid green;
   background-color: transparent;
   position: relative;
   left: 3%;

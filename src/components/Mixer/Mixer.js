@@ -24,7 +24,8 @@ const StyledMixer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 6fr 1fr;
   justify-items: center;
-  border: 1px gray solid;
+  border-top: 1px gray solid;
+  border-bottom: 1px gray solid;
   height: 100%;
   width: 100%;
   padding: 3% 0;

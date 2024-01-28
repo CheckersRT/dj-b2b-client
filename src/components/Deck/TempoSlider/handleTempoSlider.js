@@ -20,7 +20,7 @@ export default function handleTempoSlider(
   console.log("Tempo two decimal places", tempoTwoDecimal)
 
   // setTempoChangePercentage(tempoTwoDecimal);
-  setTempoChangePercentage(tempoTwoDecimal);
+  setTempoChangePercentage(percentageOfTempo);
   const newPlaybackRate = 1 + percentageOfTempo;
   console.log("NEW PLAYBACK RATE: ", newPlaybackRate)
 
