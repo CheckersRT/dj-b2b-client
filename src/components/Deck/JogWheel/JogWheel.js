@@ -1,13 +1,14 @@
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import jogWheelImg from "./JockyWheel-rotated.svg";
 import handleJogWheel from "./handleJogWheel";
 
 gsap.registerPlugin(Draggable);
 
-export default function JogWheel({ className, player }) {
+export default function JogWheel({ className, player, waveform }) {
+  const [endPoint, setEndPoint] = useState(0)
   const jogWheel = useRef(null);
 
   const getter = gsap.getProperty(jogWheel.current);
@@ -19,9 +20,15 @@ export default function JogWheel({ className, player }) {
     onDrag: (value) => {
       console.log(value);
       const rotation = getter("rotation");
-      console.log(rotation);
-      handleJogWheel(rotation, "send", player)
+      const incrementedRotation = rotation - endPoint;
+      console.log(rotation, incrementedRotation);
+      handleJogWheel(incrementedRotation, "send", player, waveform)
     },
+    onDragEnd: () => {
+      const endPoint = getter("rotation")
+      console.log(endPoint)
+      setEndPoint(endPoint)
+    }
   });
 
   return (

@@ -1,9 +1,7 @@
 import handleCue from "./handleCue";
-// import styles from "./CueButton.module.css"
 import styled from "styled-components"
 import Cue from "./cue.svg"
 import { useEffect, useState } from "react";
-import { TimeBaseClass } from "tone/build/esm/core/type/TimeBase";
 
 export default function CueButton({
   player,
@@ -19,8 +17,6 @@ useEffect(() => {
     player.start(0,0)
     waveform.play()
   }
-
-
 }, [playOnHold, player])
 
   return (
@@ -54,9 +50,6 @@ background-repeat: no-repeat;
 background-size: contain;
 background-position: center;
 background-color: white;
-
-
-
 `
 
 const RingLight = styled.div`
