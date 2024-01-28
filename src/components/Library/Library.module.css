@@ -5,9 +5,10 @@
   height: 500px;
   /* overflow: scroll; */
   /* position: fixed; */
-  padding: 15px;
+  padding: 15px 15px;
   margin: auto;
-  border: 1px solid blue;
+  border: 1px solid black;
   gap: 15px;
   z-index: 0;
+  width: 100%;
 }
