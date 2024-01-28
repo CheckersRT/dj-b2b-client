@@ -25,6 +25,8 @@ export default function Deck({
   isPlayerLoading,
   setIsPlayerLoading,
   waveform,
+  tempoChangePercentage,
+  setTempoChangePercentage
 }) {
   // const [fileData, setFileData] = useState("");
   // const [playerUrl, setPlayerUrl] = useState("");
@@ -62,9 +64,10 @@ export default function Deck({
         className={className}
         metaData={metaData}
         isPlayerLoading={isPlayerLoading}
+        tempoChangePercentage={tempoChangePercentage}
       />
       <JogWheelGridB className={className} player={player} waveform={waveform}/>
-      <TempoSliderGridC className={className} player={player} waveform={waveform}/>
+      <TempoSliderGridC className={className} player={player} waveform={waveform} metaData={metaData} setTempoChangePercentage={setTempoChangePercentage}/>
       <CueButtonGridD
         className={className}
         player={player}

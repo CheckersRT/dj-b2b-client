@@ -13,8 +13,10 @@ export default async function getWaveformImageUrl(publicID, trackDurationInSecon
 
 export function calculateWaveFormWidth(trackDurationInSeconds) {
   const waveformWidth = (trackDurationInSeconds / 0.02).toFixed(0);
+
+
   console.log(waveformWidth)
-  return waveformWidth;
+  return parseInt(waveformWidth);
 
   // 6.32 minutes = 392 seconds
   // 392/14000 *100 = 2.8%

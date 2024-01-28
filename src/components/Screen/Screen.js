@@ -15,6 +15,8 @@ export default function Screen({
   waveformCh2,
   setWaveformCh1,
   setWaveformCh2,
+  tempoChangePercentageCh1,
+  tempoChangePercentageCh2,
 }) {
   return (
     <Container className={className}>
@@ -25,12 +27,14 @@ export default function Screen({
         waveform={waveformCh1}
         setWaveform={setWaveformCh1}
         metaData={metaDataCh1}
+        tempoChangePercentage={tempoChangePercentageCh1}
       />
       <Waveform
         className={className}
         waveform={waveformCh2}
         setWaveform={setWaveformCh2}
         metaData={metaDataCh2}
+        tempoChangePercentage={tempoChangePercentageCh2}
       />
       {/* </div> */}
       {/* <Clock player={player1} timeElapsed={timeElapsedCh1} />

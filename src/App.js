@@ -25,6 +25,8 @@ function App(className) {
   const [isPlayer2Loading, setIsPlayer2Loading] = useState(false);
   const [waveformCh1, setWaveformCh1] = useState({});
   const [waveformCh2, setWaveformCh2] = useState({});
+  const [tempoChangePercentageCh1, setTempoChangePercentageCh1] = useState(0)
+  const [tempoChangePercentageCh2, setTempoChangePercentageCh2] = useState(0)
 
 
   const playerCh1Ref = useRef(playerCh1);
@@ -92,6 +94,8 @@ function App(className) {
         waveformCh2={waveformCh2}
         setWaveformCh1={setWaveformCh1}
         setWaveformCh2={setWaveformCh2}
+        tempoChangePercentageCh1={tempoChangePercentageCh1}
+        tempoChangePercentageCh2={tempoChangePercentageCh2}
       />
       <Controls className={className}>
         <Deck
@@ -108,6 +112,8 @@ function App(className) {
           timeElapsed={timeElapsedCh1}
           setTimeElapsed={setTimeElapsedCh1}
           waveform={waveformCh1}
+          tempoChangePercentage={tempoChangePercentageCh1}
+          setTempoChangePercentage={setTempoChangePercentageCh1}
         />
 
         <Mixer
@@ -129,6 +135,8 @@ function App(className) {
           timeElapsed={timeElapsedCh2}
           setTimeElapsed={setTimeElapsedCh2}
           waveform={waveformCh2}
+          tempoChangePercentage={tempoChangePercentageCh2}
+          setTempoChangePercentage={setTempoChangePercentageCh2}
         />
       </Controls>
       <form onSubmit={(event) => handleSubmit(event, xmlFile)}>
