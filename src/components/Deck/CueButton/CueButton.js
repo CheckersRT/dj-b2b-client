@@ -13,10 +13,11 @@ export default function CueButton({
 const [playOnHold, setPlayOnHold] = useState(false)
 
 useEffect(() => {
-  if(playOnHold) {
-    player.start(0,0)
-    waveform.play()
-  }
+
+  if(player.state === "stopped" && playOnHold) {
+      player.start(0,0)
+      waveform.play()
+    }
 }, [playOnHold, player])
 
   return (

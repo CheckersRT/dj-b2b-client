@@ -7,7 +7,7 @@ import handleJogWheel from "./handleJogWheel";
 
 gsap.registerPlugin(Draggable);
 
-export default function JogWheel({ className, player, waveform }) {
+export default function JogWheel({ className, player, waveform, tempoChangePercentage }) {
   const [endPoint, setEndPoint] = useState(0)
   const jogWheel = useRef(null);
 
@@ -22,7 +22,7 @@ export default function JogWheel({ className, player, waveform }) {
       const rotation = getter("rotation");
       const incrementedRotation = rotation - endPoint;
       console.log(rotation, incrementedRotation);
-      handleJogWheel(incrementedRotation, "send", player, waveform)
+      handleJogWheel(incrementedRotation, "send", player, waveform, tempoChangePercentage)
     },
     onDragEnd: () => {
       const endPoint = getter("rotation")

@@ -1,12 +1,21 @@
 // import styles from "./TrackInfo.module.css";
 import styled from "styled-components"
+import { useEffect, useState } from "react"
 
-export default function TrackInfo({ className, metaData, isPlayerLoading }) {
+export default function TrackInfo({ className, metaData, isPlayerLoading, tempoChangePercentage }) {
+  const [bpm, setBpm] = useState(0)
+
+  useEffect(() => {
+      const bpm = (parseInt(metaData.bpm) + (parseInt(metaData.bpm) * tempoChangePercentage)).toFixed(2)
+      setBpm(bpm)
+
+  }, [metaData, tempoChangePercentage])
+
   return (
     <StyledDiv className={className}>
       <TrackName>{metaData && metaData.name}</TrackName>
       <Artist>{metaData && metaData.artist}</Artist>
-      <Tempo>{metaData && metaData.bpm}</Tempo>
+      <Tempo>{metaData && bpm ? bpm : null}</Tempo>
       <Key>{metaData && metaData.tonality}</Key>
       <TimeRemaining>{metaData && metaData.totalTime}</TimeRemaining>
       <TimeCurrent>{metaData && metaData.totalTime}</TimeCurrent>

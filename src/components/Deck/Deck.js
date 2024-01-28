@@ -25,6 +25,8 @@ export default function Deck({
   isPlayerLoading,
   setIsPlayerLoading,
   waveform,
+  tempoChangePercentage,
+  setTempoChangePercentage,
 }) {
   // const [fileData, setFileData] = useState("");
   // const [playerUrl, setPlayerUrl] = useState("");
@@ -62,9 +64,21 @@ export default function Deck({
         className={className}
         metaData={metaData}
         isPlayerLoading={isPlayerLoading}
+        tempoChangePercentage={tempoChangePercentage}
       />
-      <JogWheelGridB className={className} player={player} waveform={waveform}/>
-      <TempoSliderGridC className={className} player={player} waveform={waveform}/>
+      <JogWheelGridB
+        className={className}
+        player={player}
+        waveform={waveform}
+        tempoChangePercentage={tempoChangePercentage}
+      />
+      <TempoSliderGridC
+        className={className}
+        player={player}
+        waveform={waveform}
+        metaData={metaData}
+        setTempoChangePercentage={setTempoChangePercentage}
+      />
       <CueButtonGridD
         className={className}
         player={player}
@@ -100,30 +114,23 @@ const Container = styled.div`
   height: 75vh;
   padding: 2% 3% 2% 3%;
   border: 1px gray solid;
+  border-collaspe: collaspe;
 `;
 
 const TrackInfoGridA = styled(TrackInfo)`
   grid-area: a;
-  // grid-row: 1;
-  // grid-column: 1 / -1;
 `;
 const JogWheelGridB = styled(JogWheel)`
   grid-area: b;
-  // grid-row: 2;
-  // grid-column: 1 / -1;
+
 `;
 const TempoSliderGridC = styled(TempoSlider)`
   grid-area: c;
-  // grid-row: 3 / -1;
-  // grid-column: 5 / 6:
 `;
 const CueButtonGridD = styled(CueButton)`
   grid-area: d;
-  // grid-row: 4;
-  // grid-column: 1;
+
 `;
 const PlayPauseButtonGridE = styled(PlayPauseButton)`
   grid-area: e;
-  // grid-row: 5;
-  // grid-column: 1;
 `;

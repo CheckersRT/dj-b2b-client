@@ -23,8 +23,10 @@ function App(className) {
   const [playerUrlCh2, setPlayerUrlCh2] = useState("");
   const [isPlayer1Loading, setIsPlayer1Loading] = useState(false);
   const [isPlayer2Loading, setIsPlayer2Loading] = useState(false);
-  const [waveformCh1, setWaveformCh1] = useState();
-  const [waveformCh2, setWaveformCh2] = useState();
+  const [waveformCh1, setWaveformCh1] = useState({});
+  const [waveformCh2, setWaveformCh2] = useState({});
+  const [tempoChangePercentageCh1, setTempoChangePercentageCh1] = useState(0)
+  const [tempoChangePercentageCh2, setTempoChangePercentageCh2] = useState(0)
 
 
   const playerCh1Ref = useRef(playerCh1);
@@ -88,8 +90,12 @@ function App(className) {
         player2={playerCh2Ref.current}
         timeElapsedCh1={timeElapsedCh1}
         timeElapsedCh2={timeElapsedCh2}
+        waveformCh1={waveformCh1}
+        waveformCh2={waveformCh2}
         setWaveformCh1={setWaveformCh1}
         setWaveformCh2={setWaveformCh2}
+        tempoChangePercentageCh1={tempoChangePercentageCh1}
+        tempoChangePercentageCh2={tempoChangePercentageCh2}
       />
       <Controls className={className}>
         <Deck
@@ -106,6 +112,8 @@ function App(className) {
           timeElapsed={timeElapsedCh1}
           setTimeElapsed={setTimeElapsedCh1}
           waveform={waveformCh1}
+          tempoChangePercentage={tempoChangePercentageCh1}
+          setTempoChangePercentage={setTempoChangePercentageCh1}
         />
 
         <Mixer
@@ -127,6 +135,8 @@ function App(className) {
           timeElapsed={timeElapsedCh2}
           setTimeElapsed={setTimeElapsedCh2}
           waveform={waveformCh2}
+          tempoChangePercentage={tempoChangePercentageCh2}
+          setTempoChangePercentage={setTempoChangePercentageCh2}
         />
       </Controls>
       <form onSubmit={(event) => handleSubmit(event, xmlFile)}>
@@ -147,6 +157,8 @@ function App(className) {
         setIsPlayer2Loading={setIsPlayer2Loading}
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}
+        waveformCh1={waveformCh1}
+        waveformCh2={waveformCh2}
       />
     </Container>
   );

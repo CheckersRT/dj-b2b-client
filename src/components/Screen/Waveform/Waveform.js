@@ -6,31 +6,57 @@ import { gsap } from "gsap";
 
 export default function Waveform({
   metaData,
+  waveform,
   setWaveform,
+  tempoChangePercentage,
 }) {
   const [imageSrc, setImageSrc] = useState("");
+  const [waveformWidth, setWaveformWidth] = useState(0);
+  const [waveformTotalWidth, setWaveformTotalWidth] = useState(0)
+
   const imgRef = useRef();
 
-  useEffect(() => {
-    const imageSrc = metaData.waveformURL;
-    setImageSrc(imageSrc);
-    const waveformWidth = calculateWaveFormWidth(metaData.totalTime);
-    const duration = metaData.totalTime;
+useEffect(() => {
+  const imageUrl = metaData.waveformURL;
+  setImageSrc(imageUrl);
+  const waveformTotalWidth = calculateWaveFormWidth(metaData.totalTime);
+  setWaveformTotalWidth(waveformTotalWidth)
 
-    const waveform = gsap.to(imgRef.current, {
-      duration: duration,
-      x: -waveformWidth,
-      paused: true,
-      ease: "none",
-    });
-    setWaveform(waveform);
-  }, [imgRef, metaData]);
+  const waveformAnimation = gsap.to(imgRef.current, {
+    duration: metaData.totalTime,
+    x: -waveformTotalWidth,
+    paused: true,
+    ease: "none",
+  });
+  setWaveform(waveformAnimation);
+
+}, [metaData, setWaveform])
+
+  useEffect(() => {
+      
+      setTimeout(() => {
+      const waveformWidthAdjustedForTempo =
+      waveformTotalWidth + waveformTotalWidth * tempoChangePercentage;
+
+      setWaveformWidth(waveformWidthAdjustedForTempo);
+    }, 500)
+
+
+  }, [tempoChangePercentage, waveformTotalWidth]);
 
   return (
-    <StyledDiv ref={imgRef} 
-    // onClick={() => waveform.paused(!waveform.paused())}
+    // <>
+    <StyledDiv
+      ref={imgRef}
+      // onClick={() => waveform.paused(!waveform.paused())}
     >
-      {imageSrc ? <img src={imageSrc} alt="waveform"></img> : null}
+      {imageSrc ? (
+        <StyledWaveformImg
+          src={imageSrc}
+          alt="waveform"
+          $width={waveformWidth}
+        ></StyledWaveformImg>
+      ) : null}
     </StyledDiv>
   );
 }
@@ -40,3 +66,8 @@ const StyledDiv = styled.div`
   left: 50%;
   // border: 1px pink solid;
 `;
+
+const StyledWaveformImg = styled.img`
+  width: ${(props) => props.$width}px;
+`;
+
