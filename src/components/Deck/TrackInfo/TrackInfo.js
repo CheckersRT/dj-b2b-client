@@ -6,7 +6,9 @@ export default function TrackInfo({ className, metaData, isPlayerLoading, tempoC
   const [bpm, setBpm] = useState(0)
 
   useEffect(() => {
-      const bpm = (parseInt(metaData.bpm) + (parseInt(metaData.bpm) * tempoChangePercentage)).toFixed(2)
+      const bpm = (parseInt(metaData.bpm) + (parseInt(metaData.bpm) * tempoChangePercentage))
+      console.log(bpm)
+      // .toFixed(2)
       setBpm(bpm)
 
   }, [metaData, tempoChangePercentage])

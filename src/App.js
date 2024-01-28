@@ -6,6 +6,7 @@ import Library from "./components/Library/Library";
 import { useState, useRef } from "react";
 import createPlayer from "./utils/createPlayer";
 import styled from "styled-components";
+import LibraryLoadButton from "./components/Library/LibraryLoadButton/LibraryLoadButton";
 
 const playerCh1 = createPlayer(1);
 const playerCh2 = createPlayer(2);
@@ -139,15 +140,7 @@ function App(className) {
           setTempoChangePercentage={setTempoChangePercentageCh2}
         />
       </Controls>
-      <form onSubmit={(event) => handleSubmit(event, xmlFile)}>
-        <label htmlFor="xmlUpload"></label>
-        <input
-          name="xmlUpload"
-          type="file"
-          onChange={(event) => setXmlFile(event.target.files[0])}
-        />
-        <button type="submit">Upload XML</button>
-      </form>
+      <LibraryLoadButton xmlFile={xmlFile} setXmlFile={setXmlFile} setPlaylistsArray={setPlaylistsArray}></LibraryLoadButton>
       <Library
         className={className}
         playlistsArray={playlistsArray}
@@ -159,6 +152,8 @@ function App(className) {
         setMetaDataCh2={setMetaDataCh2}
         waveformCh1={waveformCh1}
         waveformCh2={waveformCh2}
+        xmlFile={xmlFile}
+        setXmlFile={setXmlFile}
       />
     </Container>
   );

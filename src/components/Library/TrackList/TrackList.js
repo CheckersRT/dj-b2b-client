@@ -4,6 +4,7 @@ import styles from "./TrackList.module.css";
 import styled from "styled-components"
 import {useRef} from "react"
 import sortTable from "../sortTable";
+import LibraryLoadButton from "../LibraryLoadButton/LibraryLoadButton";
 
 export default function TrackList({
   playlistName,
@@ -17,6 +18,8 @@ export default function TrackList({
   playlist,
   waveformCh1,
   waveformCh2,
+  xmlFile,
+  setXmlFile,
 }) {
   const tableRef = useRef()
   console.log("Playlist: ", playlist);
@@ -38,7 +41,7 @@ export default function TrackList({
           ? tracksArray.playlistName === playlist.attributes.Name &&
             tracksArray.trackList.map((track) => (
               <TrackRow   
-              key={track.ID}
+              key={track.Name}
               track={track}
               setPlayerUrlCh1={setPlayerUrlCh1}
               setPlayerUrlCh2={setPlayerUrlCh2}
