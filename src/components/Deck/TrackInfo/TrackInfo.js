@@ -22,8 +22,8 @@ export default function TrackInfo({ className, metaData, isPlayerLoading, tempoC
       <Artist>{metaData && metaData.artist}</Artist>
       <Tempo>{metaData && bpm !== 0 ? bpm : null}</Tempo>
       <Key>{metaData && metaData.tonality}</Key>
-      <TimeRemaining>{metaData && metaData.totalTime}</TimeRemaining>
-      <TimeCurrent>{metaData && metaData.totalTime}</TimeCurrent>
+      {/* <TimeRemaining>{metaData && metaData.totalTime}</TimeRemaining>
+      <TimeCurrent>{metaData && metaData.totalTime}</TimeCurrent> */}
       <p>{isPlayerLoading && "Loading..."}</p>
     </StyledDiv>
   );

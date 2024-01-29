@@ -67,7 +67,6 @@ export default function TrackRow({
           Deck 1
         </StyledButton>
         :
-
         <StyledButton
           name={track.Name}
           onClick={(event) => {
