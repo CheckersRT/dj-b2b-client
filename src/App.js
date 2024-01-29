@@ -146,6 +146,8 @@ function App(className) {
         playlistsArray={playlistsArray}
         setPlayerUrlCh1={setPlayerUrlCh1}
         setPlayerUrlCh2={setPlayerUrlCh2}
+        isPlayer1Loading={isPlayer1Loading}
+        isPlayer2Loading={isPlayer2Loading}
         setIsPlayer1Loading={setIsPlayer1Loading}
         setIsPlayer2Loading={setIsPlayer2Loading}
         setMetaDataCh1={setMetaDataCh1}
@@ -154,6 +156,8 @@ function App(className) {
         waveformCh2={waveformCh2}
         xmlFile={xmlFile}
         setXmlFile={setXmlFile}
+        playerCh1={playerCh1Ref}
+        playerCh2={playerCh2Ref}
       />
     </Container>
   );

@@ -6,10 +6,13 @@ export default function TrackInfo({ className, metaData, isPlayerLoading, tempoC
   const [bpm, setBpm] = useState(0)
 
   useEffect(() => {
-      const bpm = (parseInt(metaData.bpm) + (parseInt(metaData.bpm) * tempoChangePercentage))
+    if(metaData.bpm) {
+
+      const bpm = (parseInt(metaData.bpm) + (parseInt(metaData.bpm) * (tempoChangePercentage)))
       console.log(bpm)
       // .toFixed(2)
-      setBpm(bpm)
+      setBpm(bpm.toFixed(2))
+    }
 
   }, [metaData, tempoChangePercentage])
 
@@ -17,7 +20,7 @@ export default function TrackInfo({ className, metaData, isPlayerLoading, tempoC
     <StyledDiv className={className}>
       <TrackName>{metaData && metaData.name}</TrackName>
       <Artist>{metaData && metaData.artist}</Artist>
-      <Tempo>{metaData && bpm ? bpm : null}</Tempo>
+      <Tempo>{metaData && bpm !== 0 ? bpm : null}</Tempo>
       <Key>{metaData && metaData.tonality}</Key>
       <TimeRemaining>{metaData && metaData.totalTime}</TimeRemaining>
       <TimeCurrent>{metaData && metaData.totalTime}</TimeCurrent>

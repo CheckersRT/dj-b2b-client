@@ -13,6 +13,8 @@ export default function TrackList({
   setPlayerUrlCh2,
   setMetaDataCh1,
   setMetaDataCh2,
+  isPlayer1Loading,
+  isPlayer2Loading,
   setIsPlayer1Loading,
   setIsPlayer2Loading,
   playlist,
@@ -20,6 +22,9 @@ export default function TrackList({
   waveformCh2,
   xmlFile,
   setXmlFile,
+  playerCh1,
+  playerCh2,
+
 }) {
   const tableRef = useRef()
   console.log("Playlist: ", playlist);
@@ -47,10 +52,15 @@ export default function TrackList({
               setPlayerUrlCh2={setPlayerUrlCh2}
               setMetaDataCh1={setMetaDataCh1}
               setMetaDataCh2={setMetaDataCh2}
+              isPlayer1Loading={isPlayer1Loading}
+              isPlayer2Loading={isPlayer2Loading}
               setIsPlayer1Loading={setIsPlayer1Loading}
               setIsPlayer2Loading={setIsPlayer2Loading}
               waveformCh1={waveformCh1}
-              waveformCh2={waveformCh2}/>
+              waveformCh2={waveformCh2}
+              playerCh1={playerCh1}
+              playerCh2={playerCh2}
+              />
             ))
           : null}
       </table>
