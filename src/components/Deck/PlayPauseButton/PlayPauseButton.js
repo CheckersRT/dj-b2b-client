@@ -51,6 +51,8 @@ const StyledButton = styled.button`
   border: none;
   height: 100%;
   width: 100%;
+  min-width: 100px;
+  min-height: 100px;
 
   background-image: url(${PlayPause});
   background-repeat: no-repeat;
@@ -59,8 +61,8 @@ const StyledButton = styled.button`
   background-color: white;
 `;
 const RingLight = styled.div`
-  width: 72%;
-  height: 85%;
+  width: 85px;
+  height: 85px;
   margin-top: 7%;
   margin-left: auto;
   margin-right: auto;

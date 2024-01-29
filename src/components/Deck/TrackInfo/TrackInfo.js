@@ -55,12 +55,12 @@ overflow: hidden;
 `
 
 const Tempo = styled.p`
-font-size: 0.7em;
+font-size: 0.8em;
 grid-row: 2;
 grid-column: 3;
 `
 const Key = styled.p`
-font-size: 0.7em;
+font-size: 0.8em;
 grid-row: 2;
 grid-column: 4;
 `
