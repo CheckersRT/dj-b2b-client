@@ -33,7 +33,7 @@ const StyledDiv = styled.div`
 width: 100%;
 // border: 1px red solid;
 display: grid;
-grid-template-columns: 4fr 1fr 1fr 1fr 2fr 1fr 1fr;
+grid-template-columns: 4fr 2fr 2fr 1fr 2fr 1fr 1fr;
 grid-template-rows: 1fr 1fr;
 `
 
@@ -46,7 +46,7 @@ overflow: hidden;
 `
 
 const Artist = styled.p`
-font-size: 0.7em;
+font-size: 0.8em;
 grid-row: 2;
 grid-column: 1;
 white-space: nowrap;

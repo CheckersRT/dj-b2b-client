@@ -56,8 +56,10 @@ background-color: white;
 `
 
 const RingLight = styled.div`
-width: 91px;
-height: 91px;
+min-width: 91px;
+min-height: 91px;
+width: 51%;
+height: 51%;
   margin: auto;
   border: #fadc5a 5px solid;
   border-radius: 50%;
