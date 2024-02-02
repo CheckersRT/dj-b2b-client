@@ -51,5 +51,5 @@ const StyledJogWheel = styled.img`
   object-fit: cover;
   width: 65%;
   padding-top: 10px;
-  overflow: hidden;
+  // overflow: hidden;
 `;

@@ -45,6 +45,8 @@ padding: 0;
 margin: auto;
 height: 100%;
 width: 100%;
+min-width: 100px;
+min-height: 100px;
 border: none;
 background-image: url(${Cue});
 background-repeat: no-repeat;
@@ -54,8 +56,10 @@ background-color: white;
 `
 
 const RingLight = styled.div`
-  width: 76%;
-  height: 91%;
+min-width: 91px;
+min-height: 91px;
+width: 51%;
+height: 51%;
   margin: auto;
   border: #fadc5a 5px solid;
   border-radius: 50%;
