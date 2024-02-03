@@ -13,9 +13,8 @@ export default async function uploadTrack(name) {
           console.log(data)
           if(data.error) {
             alert(data.error)
-          }
-
-          return data
+            return data
+          } else return data
         
     } catch (error) {
         console.log("Error from UploadTrack: ", error)

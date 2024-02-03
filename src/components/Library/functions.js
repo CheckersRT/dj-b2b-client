@@ -62,6 +62,10 @@ export async function handleLoadDeck(
     console.log(trackInDb);
   } else if (trackInDb === false) {
     const data = await uploadTrack(name);
+    if(data.error) {
+      setIsPlayerLoading(false);
+      return
+    }
     const url = data.url;
     const publicID = data.public_id;
     const waveformImageUrl = await getWaveformImageUrl(
