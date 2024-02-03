@@ -11,9 +11,13 @@ export default async function uploadTrack(name) {
         
           const data = await response.json()
           console.log(data)
+          if(data.error) {
+            alert(data.error)
+          }
+
           return data
         
     } catch (error) {
-        
+        console.log("Error from UploadTrack: ", error)
     }
 }
