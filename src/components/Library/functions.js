@@ -7,15 +7,17 @@ export async function handleClick(
   event,
   playlistSelected,
   setPlaylistSelected,
-  setTracksArray
+  setTracksArray,
+  playlist,
 ) {
+  event.stopPropagation();
   const name = event.target.getAttribute("name");
   console.log(event.target.getAttribute("name"));
 
   setPlaylistSelected(!playlistSelected);
 
   try {
-    const response = await fetch("http://localhost:3030/getTracksInPlaylist", {
+    const response = await fetch("http://localhost:3030/routes/getTracksInPlaylist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +26,7 @@ export async function handleClick(
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log("Playlist from server: ", data);
     setTracksArray(data);
   } catch (error) {}
 }

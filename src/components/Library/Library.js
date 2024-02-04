@@ -5,6 +5,7 @@ import styles from "./Library.module.css"
 
 export default function Library({
   playlistsArray,
+  collection,
   setPlayerUrlCh1,
   setPlayerUrlCh2,
   isPlayer1Loading,
@@ -27,6 +28,7 @@ export default function Library({
   return (
     <div className={styles.container}>
       <PlaylistList
+      collection={collection}
         playlistsArray={playlistsArray}
         setPlaylist={setPlaylist}
         playlistSelected={playlistSelected}
@@ -42,6 +44,7 @@ export default function Library({
         setPlayerUrlCh1={setPlayerUrlCh1}
         setPlayerUrlCh2={setPlayerUrlCh2}
         // playlistName={playlist.attributes.Name}
+        collection={collection}
         tracksArray={tracksArray}
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}

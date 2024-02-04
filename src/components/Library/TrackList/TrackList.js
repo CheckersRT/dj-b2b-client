@@ -2,13 +2,12 @@ import { handleClickTrack, handleLoadDeck } from "../../Library/functions";
 import TrackRow from "../TrackRow/TrackRow";
 import styles from "./TrackList.module.css";
 import styled from "styled-components"
-import {useRef} from "react"
+import {useEffect, useRef, useState} from "react"
 import sortTable from "../sortTable";
 import LibraryLoadButton from "../LibraryLoadButton/LibraryLoadButton";
 
 export default function TrackList({
-  playlistName,
-  tracksArray,
+  collection,
   setPlayerUrlCh1,
   setPlayerUrlCh2,
   setMetaDataCh1,
@@ -20,14 +19,37 @@ export default function TrackList({
   playlist,
   waveformCh1,
   waveformCh2,
-  xmlFile,
-  setXmlFile,
+  
   playerCh1,
   playerCh2,
 
 }) {
+  const [trackList, setTrackList] = useState([])
   const tableRef = useRef()
-  console.log("Playlist: ", playlist);
+
+  useEffect(() => {
+    if(playlist) {
+
+      console.log("Playlist: ", playlist);
+    
+      // console.log("Playlist to get: ", playlistToGet.elements);
+      const trackKeys = playlist.elements.map(
+        (track) => track.attributes.Key
+        );
+        console.log("trackKeys: ", trackKeys);
+    
+      const trackList = [];
+      for (let i = 0; i < trackKeys.length; i++) {
+        const track = collection.find(
+          (track) => track.attributes.TrackID === trackKeys[i]
+        );
+        trackList.push(track.attributes);
+      }
+      console.log(trackList)
+      setTrackList(trackList)
+    }
+
+  }, [playlist, collection])
 
   return (
     <div className={styles.container}>
@@ -42,9 +64,8 @@ export default function TrackList({
           <th></th>
           <th></th>
         </StyledHeaderRow>
-        {tracksArray
-          ? tracksArray.playlistName === playlist.attributes.Name &&
-            tracksArray.trackList.map((track) => (
+        {trackList
+          ? trackList.map((track) => (
               <TrackRow   
               key={track.Name}
               track={track}

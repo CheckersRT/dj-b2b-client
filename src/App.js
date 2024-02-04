@@ -20,6 +20,7 @@ function App(className) {
   const [timeElapsedCh2, setTimeElapsedCh2] = useState(0);
   const [xmlFile, setXmlFile] = useState("");
   const [playlistsArray, setPlaylistsArray] = useState();
+  const [collection, setCollection] = useState([])
   const [playerUrlCh1, setPlayerUrlCh1] = useState("");
   const [playerUrlCh2, setPlayerUrlCh2] = useState("");
   const [isPlayer1Loading, setIsPlayer1Loading] = useState(false);
@@ -140,10 +141,11 @@ function App(className) {
           setTempoChangePercentage={setTempoChangePercentageCh2}
         />
       </Controls>
-      <LibraryLoadButton xmlFile={xmlFile} setXmlFile={setXmlFile} setPlaylistsArray={setPlaylistsArray}></LibraryLoadButton>
+      <LibraryLoadButton xmlFile={xmlFile} setXmlFile={setXmlFile} setPlaylistsArray={setPlaylistsArray} setCollection={setCollection}></LibraryLoadButton>
       <Library
         className={className}
         playlistsArray={playlistsArray}
+        collection={collection}
         setPlayerUrlCh1={setPlayerUrlCh1}
         setPlayerUrlCh2={setPlayerUrlCh2}
         isPlayer1Loading={isPlayer1Loading}
