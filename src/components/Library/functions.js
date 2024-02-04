@@ -17,7 +17,10 @@ export async function handleClick(
   setPlaylistSelected(!playlistSelected);
 
   try {
-    const response = await fetch("http://localhost:3030/routes/getTracksInPlaylist", {
+    const response = await fetch(
+      // "http://localhost:3030/routes/getTracksInPlaylist"
+      "https://dj-b2b-server.vercel.app/routes/getTracksInPlaylist"
+      , {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

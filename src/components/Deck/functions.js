@@ -11,7 +11,10 @@ export async function onChange(event, setFileData) {
 export async function loadTrack(fileData) {
     const fileName = fileData.name
     try {
-      const response = await fetch("http://localhost:3030/loadTrack", {
+      const response = await fetch(
+        // "http://localhost:3030/loadTrack"
+        "https://dj-b2b-server.vercel.app/loadTrack"
+        , {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

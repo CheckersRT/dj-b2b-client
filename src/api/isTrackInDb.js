@@ -1,6 +1,9 @@
 export default async function isTrackInDb(id) {
   try {
-    const response = await fetch("http://localhost:3030/routes/isTrackInDb", {
+    const response = await fetch(
+      // "http://localhost:3030/routes/isTrackInDb"
+      "https://dj-b2b-server.vercel.app/routes/isTrackInDb"
+      , {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

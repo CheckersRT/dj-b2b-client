@@ -1,6 +1,9 @@
 export default async function saveToDb(metaData) {
     try {
-        const response = await fetch("http://localhost:3030/routes/saveToDb", {
+        const response = await fetch(
+          // "http://localhost:3030/routes/saveToDb"
+          "https://dj-b2b-server.vercel.app/routes/saveToDb"
+        , {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

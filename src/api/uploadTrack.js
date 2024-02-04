@@ -1,7 +1,10 @@
 export default async function uploadTrack(name) {
 
     try {
-        const response = await fetch("http://localhost:3030/routes/uploadTrack", {
+        const response = await fetch(
+          // "http://localhost:3030/routes/uploadTrack"
+          "https://dj-b2b-server.vercel.app/routes/uploadTrack"
+          , {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
