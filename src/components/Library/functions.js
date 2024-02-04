@@ -7,15 +7,17 @@ export async function handleClick(
   event,
   playlistSelected,
   setPlaylistSelected,
-  setTracksArray
+  setTracksArray,
+  playlist,
 ) {
+  event.stopPropagation();
   const name = event.target.getAttribute("name");
   console.log(event.target.getAttribute("name"));
 
   setPlaylistSelected(!playlistSelected);
 
   try {
-    const response = await fetch("http://localhost:3030/getTracksInPlaylist", {
+    const response = await fetch("http://localhost:3030/routes/getTracksInPlaylist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +26,7 @@ export async function handleClick(
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log("Playlist from server: ", data);
     setTracksArray(data);
   } catch (error) {}
 }
@@ -42,10 +44,13 @@ export async function handleLoadDeck(
   setIsPlayerLoading,
   setMetaData,
   track,
-  waveform
+  waveform,
+  setIsDeckClicked,
+
 ) {
   event.stopPropagation();
   const name = event.target.getAttribute("name");
+  setIsDeckClicked({track: track.Name, isLoading: true})
   setIsPlayerLoading(true);
 
   const trackInDb = await isTrackInDb(track.TrackID);
@@ -59,6 +64,7 @@ export async function handleLoadDeck(
   if (trackInDb) {
     setPlayerUrl(trackInDb.url);
     setMetaData(trackInDb);
+    setIsDeckClicked({track: track.Name, isLoading: false})
     console.log(trackInDb);
   } else if (trackInDb === false) {
     const data = await uploadTrack(name);
@@ -109,5 +115,6 @@ export async function handleLoadDeck(
     console.log("metadata", metaData);
     setMetaData(metaData);
     saveToDb(metaData);
+    setIsDeckClicked({track: track.Name, isLoading: false})
   }
 }

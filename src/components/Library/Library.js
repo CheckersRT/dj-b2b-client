@@ -5,6 +5,7 @@ import styles from "./Library.module.css"
 
 export default function Library({
   playlistsArray,
+  collection,
   setPlayerUrlCh1,
   setPlayerUrlCh2,
   isPlayer1Loading,
@@ -15,23 +16,20 @@ export default function Library({
   setMetaDataCh2,
   waveformCh1,
   waveformCh2,
-  xmlFile,
-  setXmlFile,
   playerCh1,
   playerCh2
 }) {
-  const [tracksArray, setTracksArray] = useState();
   const [playlistSelected, setPlaylistSelected] = useState(false);
   const [playlist, setPlaylist] = useState("");
 
   return (
     <div className={styles.container}>
       <PlaylistList
+      collection={collection}
         playlistsArray={playlistsArray}
         setPlaylist={setPlaylist}
         playlistSelected={playlistSelected}
         setPlaylistSelected={setPlaylistSelected}
-        setTracksArray={setTracksArray}
       />
 
       <TrackList
@@ -41,15 +39,12 @@ export default function Library({
         setIsPlayer2Loading={setIsPlayer2Loading}
         setPlayerUrlCh1={setPlayerUrlCh1}
         setPlayerUrlCh2={setPlayerUrlCh2}
-        // playlistName={playlist.attributes.Name}
-        tracksArray={tracksArray}
+        collection={collection}
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}
         playlist={playlist}
         waveformCh1={waveformCh1}
         waveformCh2={waveformCh2}
-        xmlFile={xmlFile}
-        setXmlFile={setXmlFile}
         playerCh1={playerCh1}
         playerCh2={playerCh2}
         />

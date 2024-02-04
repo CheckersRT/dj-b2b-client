@@ -1,5 +1,4 @@
-import * as Tone from "tone"
-// import transport from "./position"
+
 
 export default function handleJogWheel(rotation, sendReceive, player, waveform, tempoChangePercentage) {
     // player.seek(`+${event.target.value}`, 0)
@@ -18,15 +17,5 @@ export default function handleJogWheel(rotation, sendReceive, player, waveform, 
         waveform.timeScale(1)
 
     }, 400)
-
-    // console.log(event.target.value)
-
-    // const positionSetter = transport()
-
-    // positionSetter.setPosition(event.target.value)1
-    
-    // const newTicks = positionSetter.getTicks()
-
-    // const now = Tone.now() + 10
 
 }

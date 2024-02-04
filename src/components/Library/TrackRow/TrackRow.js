@@ -1,7 +1,5 @@
-import { handleLoadDeck } from "../functions";
 import styled from "styled-components"
-import styles from "./TrackRow.module.css"
-import { useEffect, useState } from "react";
+import TrackLoadButton from "../TrackLoadButton/TrackLoadButton";
 
 export default function TrackRow({
   track,
@@ -9,19 +7,18 @@ export default function TrackRow({
   setPlayerUrlCh2,
   setMetaDataCh1,
   setMetaDataCh2,
-  isPlayer1Loading,
-  isPlayer2Loading,
+  isDeck1Clicked,
+  isDeck2Clicked,
+  setIsDeck1Clicked,
+  setIsDeck2Clicked,
   setIsPlayer1Loading,
   setIsPlayer2Loading,
-  playlist,
   waveformCh1,
   waveformCh2,
-  playerCh1,
-  playerCh2,
-
+  $clicked1,
+  $clicked2,
 }) {
-  const [isDeck1Clicked, setIsDeck1Clicked] = useState(false)
-  const [isDeck2Clicked, setIsDeck2Clicked] = useState(false)
+
   // const [styleDeck1, setStyleDeck1] = useState("")
 
   console.log("isDeck1Clicked: ", isDeck1Clicked)
@@ -46,85 +43,28 @@ export default function TrackRow({
       <StyledCell>{track.AverageBpm}</StyledCell>
       <StyledCell>{track.Tonality}</StyledCell>
       <StyledCell>
-        {isDeck1Clicked ? 
-
-        <StyledButton
-          name={track.Name}
-          $Clicked
-          onClick={(event) => {
-            setIsDeck1Clicked(!isDeck1Clicked)
-            handleLoadDeck(
-              event,
-              setPlayerUrlCh1,
-              setIsPlayer1Loading,
-              setMetaDataCh1,
-              track,
-              waveformCh1
-            )
-          }
-          }
-        >
-          Deck 1
-        </StyledButton>
-        :
-        <StyledButton
-          name={track.Name}
-          onClick={(event) => {
-            setIsDeck1Clicked(!isDeck1Clicked)
-            handleLoadDeck(
-              event,
-              setPlayerUrlCh1,
-              setIsPlayer1Loading,
-              setMetaDataCh1,
-              track,
-              waveformCh1
-            )
-          }
-          }
-        >
-          Deck 1
-        </StyledButton>
-        }
+        <TrackLoadButton
+          $clicked={$clicked1 ? true : false}
+          track={track}
+          setIsDeckClicked={setIsDeck1Clicked}
+          isDeckClicked={isDeck1Clicked}
+          setPlayerUrl={setPlayerUrlCh1}
+          setIsPlayerLoading={setIsPlayer1Loading}
+          setMetaData={setMetaDataCh1}
+          waveform={waveformCh1}
+        />
       </StyledCell>
       <StyledCell>
-        {isDeck2Clicked ? 
-        <StyledButton
-          name={track.Name}
-          $Clicked
-          onClick={(event) => {
-            setIsDeck2Clicked(!isDeck2Clicked)
-            handleLoadDeck(
-              event,
-              setPlayerUrlCh2,
-              setIsPlayer2Loading,
-              setMetaDataCh2,
-              track,
-              waveformCh2
-            )
-          }
-          }
-        >
-          Deck 2
-        </StyledButton>
-        :
-        <StyledButton
-          name={track.Name}
-          onClick={(event) => {
-            setIsDeck2Clicked(!isDeck2Clicked)
-            handleLoadDeck(
-              event,
-              setPlayerUrlCh2,
-              setIsPlayer2Loading,
-              setMetaDataCh2,
-              track,
-              waveformCh2
-            )
-          }
-          }
-        >
-          Deck 2
-        </StyledButton>
-        }
+        <TrackLoadButton
+          $clicked={$clicked2 ? true : false}
+          track={track}
+          setIsDeckClicked={setIsDeck2Clicked}
+          isDeckClicked={isDeck2Clicked}
+          setPlayerUrl={setPlayerUrlCh2}
+          setIsPlayerLoading={setIsPlayer2Loading}
+          setMetaData={setMetaDataCh2}
+          waveform={waveformCh2}
+        />
       </StyledCell>
     </StyledRow>
   );
@@ -141,23 +81,4 @@ height: 20px;
 
 const StyledCell = styled.td`
 padding-right: 5px;
-`
-
-const StyledButton = styled.button`
-font-size: 0.7em;
-appearance: none;
-outline: none;
-background-color: transparent;
-border: 0.8px solid black;
-padding: 8%;
-box-shadow: 0 0.5px #999;
-
-&:active {
-    box-shadow: 0 0px #999;
-    transform: translateY(1px);
-}
-
-${props => props.$Clicked ? 
-"background-color: #9cfa9b" :
-null }
 `

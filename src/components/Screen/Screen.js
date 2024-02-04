@@ -1,6 +1,4 @@
-import Clock from "./Clock.js/Clock";
 import Waveform from "./Waveform/Waveform";
-import styles from "./Screen.module.css";
 import styled from "styled-components";
 
 export default function Screen({

@@ -1,14 +1,11 @@
-import { handleClickTrack, handleLoadDeck } from "../../Library/functions";
 import TrackRow from "../TrackRow/TrackRow";
 import styles from "./TrackList.module.css";
 import styled from "styled-components"
-import {useRef} from "react"
-import sortTable from "../sortTable";
-import LibraryLoadButton from "../LibraryLoadButton/LibraryLoadButton";
+import {useEffect, useRef, useState} from "react"
+
 
 export default function TrackList({
-  playlistName,
-  tracksArray,
+  collection,
   setPlayerUrlCh1,
   setPlayerUrlCh2,
   setMetaDataCh1,
@@ -20,14 +17,38 @@ export default function TrackList({
   playlist,
   waveformCh1,
   waveformCh2,
-  xmlFile,
-  setXmlFile,
   playerCh1,
   playerCh2,
 
 }) {
+  const [trackList, setTrackList] = useState([])
+  const [isDeck1Clicked, setIsDeck1Clicked] = useState({track: "", isOn: false})
+  const [isDeck2Clicked, setIsDeck2Clicked] = useState(false)
   const tableRef = useRef()
-  console.log("Playlist: ", playlist);
+
+  useEffect(() => {
+    if(playlist) {
+
+      console.log("Playlist: ", playlist);
+    
+      // console.log("Playlist to get: ", playlistToGet.elements);
+      const trackKeys = playlist.elements.map(
+        (track) => track.attributes.Key
+        );
+        console.log("trackKeys: ", trackKeys);
+    
+      const trackList = [];
+      for (let i = 0; i < trackKeys.length; i++) {
+        const track = collection.find(
+          (track) => track.attributes.TrackID === trackKeys[i]
+        );
+        trackList.push(track.attributes);
+      }
+      console.log(trackList)
+      setTrackList(trackList)
+    }
+
+  }, [playlist, collection])
 
   return (
     <div className={styles.container}>
@@ -42,9 +63,8 @@ export default function TrackList({
           <th></th>
           <th></th>
         </StyledHeaderRow>
-        {tracksArray
-          ? tracksArray.playlistName === playlist.attributes.Name &&
-            tracksArray.trackList.map((track) => (
+        {trackList
+          && trackList.map((track) => (
               <TrackRow   
               key={track.Name}
               track={track}
@@ -60,9 +80,15 @@ export default function TrackList({
               waveformCh2={waveformCh2}
               playerCh1={playerCh1}
               playerCh2={playerCh2}
+              isDeck1Clicked={isDeck1Clicked}
+              isDeck2Clicked={isDeck2Clicked}
+              setIsDeck1Clicked={setIsDeck1Clicked}
+              setIsDeck2Clicked={setIsDeck2Clicked}
+              $clicked1={track.Name === isDeck1Clicked.track ? true : false}
+              $clicked2={track.Name === isDeck2Clicked.track ? true : false}
               />
             ))
-          : null}
+          }
       </table>
     </div>
   );

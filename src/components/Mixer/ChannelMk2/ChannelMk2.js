@@ -1,4 +1,3 @@
-import BasicKnob from "../BasicKnob/BasicKnob";
 import GainKnob from "../GainKnob/GainKnob";
 import VolumeFaderMk2 from "../VolumeFaderMk2/VolumeFaderMk2";
 import styled from "styled-components";

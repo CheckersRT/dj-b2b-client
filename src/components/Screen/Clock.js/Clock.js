@@ -2,14 +2,6 @@ import { useState, useEffect } from "react";
 
 export default function Clock({ player, timeOnPlay, timeElapsed }) {
   const [clock, setClock] = useState(0);
-  // const [timeOnPause, setTimeOnPause] = useState(0);
-
-  // const currentTime = player.immediate()
-
-  function formattedTime() {
-    
-  }
-
   useEffect(() => {
     let intervalClock;
     if (player.state === "started") {

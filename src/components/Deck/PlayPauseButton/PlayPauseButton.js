@@ -1,5 +1,4 @@
 import handlePlayPause from "./handlePlayPause";
-import styles from "./PlayPauseButton.module.css";
 import styled, { css, keyframes } from "styled-components";
 import PlayPause from "./playPause.svg";
 

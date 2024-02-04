@@ -1,30 +1,40 @@
-import { handleClick } from "../functions";
-import styles from "./PlaylistList.module.css"
+import styles from "./PlaylistList.module.css";
+import Playlist from "../Playlist/Playlist";
+import PlaylistFolder from "../PlaylistFolder/PlaylistFolder";
 
-export default function PlaylistList({ playlistsArray, setPlaylist, playlistSelected, setPlaylistSelected, setTracksArray }) {
+export default function PlaylistList({
+  playlistsArray,
+  setPlaylist,
+  playlistSelected,
+  setPlaylistSelected,
+  collection,
+}) {
+
   return (
     <div className={styles.container}>
-    <ul>
-      {playlistsArray
-        ? playlistsArray.map((playlist) => (
-            <li
-              onClick={(event) => {
-                handleClick(
-                  event,
-                  playlistSelected,
-                  setPlaylistSelected,
-                  setTracksArray,
-                );
-                setPlaylist(playlist)
-
-              }
-              }
-              key={playlist.attributes.Name}
-              name={playlist.attributes.Name}
-            >{playlist.attributes.Name}</li>
-          ))
-        : null}
-    </ul>
+      <ul>
+        {playlistsArray &&
+          playlistsArray.map((playlist) =>
+            playlist.attributes.Type === "0" ? (
+              <PlaylistFolder
+              collection={collection}
+                playlistFolder={playlist}
+                playlistSelected={playlistSelected}
+                setPlaylistSelected={setPlaylistSelected}
+                setPlaylist={setPlaylist}
+                key={playlist.attributes.Name}
+              />
+            ) : (
+              <Playlist
+                playlist={playlist}
+                playlistSelected={playlistSelected}
+                setPlaylistSelected={setPlaylistSelected}
+                setPlaylist={setPlaylist}
+                key={playlist.attributes.Name}
+              />
+            )
+          )}
+      </ul>
     </div>
   );
 }
