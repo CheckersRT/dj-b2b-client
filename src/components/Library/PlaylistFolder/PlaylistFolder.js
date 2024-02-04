@@ -1,4 +1,3 @@
-import { handleClick } from "../functions";
 import Playlist from "../Playlist/Playlist";
 import { useState } from "react";
 

@@ -1,13 +1,7 @@
-import { handleClick } from "../functions";
 
 export default function Playlist({
   playlist,
-  playlistSelected,
-  setPlaylistSelected,
-  setTracksArray,
   setPlaylist,
-  setCollection,
-  collection,
 }) {
   return (
     <li

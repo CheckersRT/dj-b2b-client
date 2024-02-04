@@ -19,7 +19,6 @@ export default function TrackList({
   playlist,
   waveformCh1,
   waveformCh2,
-  
   playerCh1,
   playerCh2,
 

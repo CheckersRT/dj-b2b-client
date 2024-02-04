@@ -16,12 +16,9 @@ export default function Library({
   setMetaDataCh2,
   waveformCh1,
   waveformCh2,
-  xmlFile,
-  setXmlFile,
   playerCh1,
   playerCh2
 }) {
-  const [tracksArray, setTracksArray] = useState();
   const [playlistSelected, setPlaylistSelected] = useState(false);
   const [playlist, setPlaylist] = useState("");
 
@@ -33,7 +30,6 @@ export default function Library({
         setPlaylist={setPlaylist}
         playlistSelected={playlistSelected}
         setPlaylistSelected={setPlaylistSelected}
-        setTracksArray={setTracksArray}
       />
 
       <TrackList
@@ -43,16 +39,12 @@ export default function Library({
         setIsPlayer2Loading={setIsPlayer2Loading}
         setPlayerUrlCh1={setPlayerUrlCh1}
         setPlayerUrlCh2={setPlayerUrlCh2}
-        // playlistName={playlist.attributes.Name}
         collection={collection}
-        tracksArray={tracksArray}
         setMetaDataCh1={setMetaDataCh1}
         setMetaDataCh2={setMetaDataCh2}
         playlist={playlist}
         waveformCh1={waveformCh1}
         waveformCh2={waveformCh2}
-        xmlFile={xmlFile}
-        setXmlFile={setXmlFile}
         playerCh1={playerCh1}
         playerCh2={playerCh2}
         />

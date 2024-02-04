@@ -1,4 +1,3 @@
-import { handleClick } from "../functions";
 import styles from "./PlaylistList.module.css";
 import Playlist from "../Playlist/Playlist";
 import PlaylistFolder from "../PlaylistFolder/PlaylistFolder";
@@ -8,7 +7,6 @@ export default function PlaylistList({
   setPlaylist,
   playlistSelected,
   setPlaylistSelected,
-  setTracksArray,
   collection,
 }) {
 
@@ -23,18 +21,16 @@ export default function PlaylistList({
                 playlistFolder={playlist}
                 playlistSelected={playlistSelected}
                 setPlaylistSelected={setPlaylistSelected}
-                setTracksArray={setTracksArray}
                 setPlaylist={setPlaylist}
+                key={playlist.attributes.trackID}
               />
             ) : (
               <Playlist
-              collection={collection}
-
                 playlist={playlist}
                 playlistSelected={playlistSelected}
                 setPlaylistSelected={setPlaylistSelected}
-                setTracksArray={setTracksArray}
                 setPlaylist={setPlaylist}
+                key={playlist.attributes.trackID}
               />
             )
           )}
