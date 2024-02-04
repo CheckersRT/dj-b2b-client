@@ -15,9 +15,9 @@ export default function createPlayer(channel) {
   let url;
 
   if (channel === 1) {
-    url = "http://res.cloudinary.com/dm1n4kfee/video/upload/v1706009922/16730547_Love_Letter_feat._The_Knocks_feat._The_Knocks__Original_Mix.mp3";
+    url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706009922/16730547_Love_Letter_feat._The_Knocks_feat._The_Knocks__Original_Mix.mp3";
   } else if (channel === 2) {
-    url = "http://res.cloudinary.com/dm1n4kfee/video/upload/v1706009922/16730547_Love_Letter_feat._The_Knocks_feat._The_Knocks__Original_Mix.mp3";
+    url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706009922/16730547_Love_Letter_feat._The_Knocks_feat._The_Knocks__Original_Mix.mp3";
   }
 
   const player = new Player({
