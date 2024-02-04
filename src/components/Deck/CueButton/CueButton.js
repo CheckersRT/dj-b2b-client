@@ -18,7 +18,7 @@ useEffect(() => {
       player.start(0,0)
       waveform.play()
     }
-}, [playOnHold, player])
+}, [playOnHold, player, waveform])
 
   return (
     <StyledDiv className={className}>

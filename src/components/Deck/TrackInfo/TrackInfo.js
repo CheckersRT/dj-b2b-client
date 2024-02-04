@@ -1,4 +1,3 @@
-// import styles from "./TrackInfo.module.css";
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 
@@ -22,8 +21,6 @@ export default function TrackInfo({ className, metaData, isPlayerLoading, tempoC
       <Artist>{metaData && metaData.artist}</Artist>
       <Tempo>{metaData && bpm !== 0 ? bpm : null}</Tempo>
       <Key>{metaData && metaData.tonality}</Key>
-      {/* <TimeRemaining>{metaData && metaData.totalTime}</TimeRemaining>
-      <TimeCurrent>{metaData && metaData.totalTime}</TimeCurrent> */}
       <p>{isPlayerLoading && "Loading..."}</p>
     </StyledDiv>
   );
@@ -65,15 +62,15 @@ grid-row: 2;
 grid-column: 4;
 `
 
-const TimeRemaining = styled.p`
-font-size: 0.9em;
-grid-row: 2;
-grid-column: 6;
-justify-self: center;
-`
-const TimeCurrent = styled.p`
-font-size: 0.9em;
-grid-row: 2;
-grid-column: 7;
-justify-self: center;
-`
+// const TimeRemaining = styled.p`
+// font-size: 0.9em;
+// grid-row: 2;
+// grid-column: 6;
+// justify-self: center;
+// `
+// const TimeCurrent = styled.p`
+// font-size: 0.9em;
+// grid-row: 2;
+// grid-column: 7;
+// justify-self: center;
+// `

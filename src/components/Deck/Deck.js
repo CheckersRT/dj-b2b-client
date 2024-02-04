@@ -1,17 +1,12 @@
-import { onChange } from "./functions";
-import { useState, useEffect } from "react";
-import uploadAudio from "./uploadAudio";
-import styles from "./Deck.module.css";
-import getMetaData from "../../api/getMetaData";
 import PlayPauseButton from "./PlayPauseButton/PlayPauseButton";
 import JogWheel from "./JogWheel/JogWheel";
 import CueButton from "./CueButton/CueButton";
 import TempoSlider from "./TempoSlider/TempoSlider";
 import TrackInfo from "./TrackInfo/TrackInfo";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 export default function Deck({
-  // clock,
   className,
   player,
   metaData,
@@ -56,7 +51,7 @@ export default function Deck({
       console.log(player.loaded);
       setIsPlayerLoading(false);
     }
-  }, [playerUrl, setTimeElapsed, setIsPlayerLoading]);
+  }, [playerUrl, setTimeElapsed, setIsPlayerLoading, player]);
 
   return (
     <Container className={className}>

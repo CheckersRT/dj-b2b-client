@@ -1,7 +1,4 @@
-import { handleLoadDeck } from "../functions";
 import styled from "styled-components"
-import styles from "./TrackRow.module.css"
-import { useEffect, useState } from "react";
 import TrackLoadButton from "../TrackLoadButton/TrackLoadButton";
 
 export default function TrackRow({
@@ -84,23 +81,4 @@ height: 20px;
 
 const StyledCell = styled.td`
 padding-right: 5px;
-`
-
-const StyledButton = styled.button`
-font-size: 0.7em;
-appearance: none;
-outline: none;
-background-color: transparent;
-border: 0.8px solid black;
-padding: 8%;
-box-shadow: 0 0.5px #999;
-
-&:active {
-    box-shadow: 0 0px #999;
-    transform: translateY(1px);
-}
-
-${props => props.$Clicked ? 
-"background-color: #9cfa9b" :
-null }
 `

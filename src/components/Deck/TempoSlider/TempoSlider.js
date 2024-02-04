@@ -5,7 +5,6 @@ import handleTempoSlider from "./handleTempoSlider";
 import styled from "styled-components";
 import tempoSlider from "./TempoControl-no-handle.svg";
 import tempoHandle from "./TempoControl-handle.svg";
-import { debounce } from "lodash";
 
 
 gsap.registerPlugin(Draggable);

@@ -1,5 +1,4 @@
-import * as Tone from "tone"
-// import transport from "./position"
+
 
 export default function handleJogWheel(rotation, sendReceive, player, waveform, tempoChangePercentage) {
     // player.seek(`+${event.target.value}`, 0)
