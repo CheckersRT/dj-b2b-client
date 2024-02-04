@@ -19,14 +19,4 @@ export default function handleJogWheel(rotation, sendReceive, player, waveform, 
 
     }, 400)
 
-    // console.log(event.target.value)
-
-    // const positionSetter = transport()
-
-    // positionSetter.setPosition(event.target.value)1
-    
-    // const newTicks = positionSetter.getTicks()
-
-    // const now = Tone.now() + 10
-
 }

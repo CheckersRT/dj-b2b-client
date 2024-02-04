@@ -24,6 +24,8 @@ export default function TrackList({
 
 }) {
   const [trackList, setTrackList] = useState([])
+  const [isDeck1Clicked, setIsDeck1Clicked] = useState({track: "", isOn: false})
+  const [isDeck2Clicked, setIsDeck2Clicked] = useState(false)
   const tableRef = useRef()
 
   useEffect(() => {
@@ -64,7 +66,7 @@ export default function TrackList({
           <th></th>
         </StyledHeaderRow>
         {trackList
-          ? trackList.map((track) => (
+          && trackList.map((track) => (
               <TrackRow   
               key={track.Name}
               track={track}
@@ -80,9 +82,15 @@ export default function TrackList({
               waveformCh2={waveformCh2}
               playerCh1={playerCh1}
               playerCh2={playerCh2}
+              isDeck1Clicked={isDeck1Clicked}
+              isDeck2Clicked={isDeck2Clicked}
+              setIsDeck1Clicked={setIsDeck1Clicked}
+              setIsDeck2Clicked={setIsDeck2Clicked}
+              $clicked1={track.Name === isDeck1Clicked.track ? true : false}
+              $clicked2={track.Name === isDeck2Clicked.track ? true : false}
               />
             ))
-          : null}
+          }
       </table>
     </div>
   );

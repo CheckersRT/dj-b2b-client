@@ -10,7 +10,9 @@ export default function LibraryLoadButton({
   return (
     <Container>
       <StyledForm
-        onSubmit={(event) => handleSubmit(event, xmlFile, setPlaylistsArray, setCollection)}
+        onSubmit={(event) =>
+          handleSubmit(event, xmlFile, setPlaylistsArray, setCollection)
+        }
       >
         <label htmlFor="xmlUpload">Load Library</label>
         <StyledInput

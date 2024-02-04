@@ -22,7 +22,7 @@ export default function PlaylistList({
                 playlistSelected={playlistSelected}
                 setPlaylistSelected={setPlaylistSelected}
                 setPlaylist={setPlaylist}
-                key={playlist.attributes.trackID}
+                key={playlist.attributes.Name}
               />
             ) : (
               <Playlist
@@ -30,7 +30,7 @@ export default function PlaylistList({
                 playlistSelected={playlistSelected}
                 setPlaylistSelected={setPlaylistSelected}
                 setPlaylist={setPlaylist}
-                key={playlist.attributes.trackID}
+                key={playlist.attributes.Name}
               />
             )
           )}

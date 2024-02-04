@@ -5,7 +5,7 @@ export async function handleSubmit(event, xmlFile, setPlaylistsArray, setCollect
     const formData = new FormData()
     formData.append("file", event.target.file.files[0])
 
-    const data = await saveXML(formData);
+    const data = await getPlaylistsAndCollection(formData);
     if (data) {
       console.log(data.file)
       setPlaylistsArray(data.playlists);
@@ -13,10 +13,10 @@ export async function handleSubmit(event, xmlFile, setPlaylistsArray, setCollect
     }
   }
 
- export async function saveXML(formData) {
+ export async function getPlaylistsAndCollection(formData) {
 
     try {
-      const response = await fetch("http://localhost:3030/routes/saveXML", {
+      const response = await fetch("http://localhost:3030/routes/getPlaylistsAndCollection", {
         method: "POST",
         body: formData,
       });
@@ -33,22 +33,7 @@ export async function handleSubmit(event, xmlFile, setPlaylistsArray, setCollect
 
     } catch (error) {
       console.log(error);
-      console.log("SaveXML response message: ", error.message)
+      console.log("Response message: ", error.message)
       alert("Error uploading Xml")
-    }
-  }
-
- export async function getPlaylists(setPlaylistsArray) {
-    try {
-      const response = await fetch("http://localhost:3030/routes/getPlaylists", {
-        method: "GET",
-      });
-      const data = await response.json();
-      console.log(data);
-      setPlaylistsArray(data);
-
-      return data;
-    } catch (error) {
-      console.log(error);
     }
   }

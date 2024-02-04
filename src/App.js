@@ -20,72 +20,23 @@ function App(className) {
   const [timeElapsedCh2, setTimeElapsedCh2] = useState(0);
   const [xmlFile, setXmlFile] = useState("");
   const [playlistsArray, setPlaylistsArray] = useState();
-  const [collection, setCollection] = useState([])
+  const [collection, setCollection] = useState([]);
   const [playerUrlCh1, setPlayerUrlCh1] = useState("");
   const [playerUrlCh2, setPlayerUrlCh2] = useState("");
   const [isPlayer1Loading, setIsPlayer1Loading] = useState(false);
   const [isPlayer2Loading, setIsPlayer2Loading] = useState(false);
   const [waveformCh1, setWaveformCh1] = useState({});
   const [waveformCh2, setWaveformCh2] = useState({});
-  const [tempoChangePercentageCh1, setTempoChangePercentageCh1] = useState(0)
-  const [tempoChangePercentageCh2, setTempoChangePercentageCh2] = useState(0)
-
+  const [tempoChangePercentageCh1, setTempoChangePercentageCh1] = useState(0);
+  const [tempoChangePercentageCh2, setTempoChangePercentageCh2] = useState(0);
 
   const playerCh1Ref = useRef(playerCh1);
   const playerCh2Ref = useRef(playerCh2);
 
-  async function handleSubmit(event, xmlFile) {
-    event.preventDefault();
-    if (!xmlFile) return;
-
-    const data = await saveXML(event, xmlFile);
-    console.log(data);
-    if (data.message === "success") {
-      getPlaylists();
-    }
-  }
-
-  async function getPlaylists() {
-    try {
-      const response = await fetch("http://localhost:3030/getPlaylists", {
-        method: "GET",
-      });
-      const data = await response.json();
-      console.log(data);
-      setPlaylistsArray(data);
-
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function saveXML(event, xmlFile) {
-    const contentType = xmlFile.type;
-    console.log(contentType);
-
-    console.log(xmlFile);
-    try {
-      const response = await fetch("http://localhost:3030/saveXML", {
-        method: "POST",
-        headers: {
-          "Content-Type": contentType,
-        },
-        body: xmlFile,
-      });
-      const data = await response.json();
-      console.log(data);
-
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return (
     <Container className={className}>
       <Screen
-      className={className}
+        className={className}
         metaDataCh1={metaDataCh1}
         metaDataCh2={metaDataCh2}
         player1={playerCh1Ref.current}
@@ -141,7 +92,12 @@ function App(className) {
           setTempoChangePercentage={setTempoChangePercentageCh2}
         />
       </Controls>
-      <LibraryLoadButton xmlFile={xmlFile} setXmlFile={setXmlFile} setPlaylistsArray={setPlaylistsArray} setCollection={setCollection}></LibraryLoadButton>
+      <LibraryLoadButton
+        xmlFile={xmlFile}
+        setXmlFile={setXmlFile}
+        setPlaylistsArray={setPlaylistsArray}
+        setCollection={setCollection}
+      ></LibraryLoadButton>
       <Library
         className={className}
         playlistsArray={playlistsArray}
@@ -156,8 +112,6 @@ function App(className) {
         setMetaDataCh2={setMetaDataCh2}
         waveformCh1={waveformCh1}
         waveformCh2={waveformCh2}
-        xmlFile={xmlFile}
-        setXmlFile={setXmlFile}
         playerCh1={playerCh1Ref}
         playerCh2={playerCh2Ref}
       />

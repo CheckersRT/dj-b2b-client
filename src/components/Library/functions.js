@@ -44,10 +44,13 @@ export async function handleLoadDeck(
   setIsPlayerLoading,
   setMetaData,
   track,
-  waveform
+  waveform,
+  setIsDeckClicked,
+
 ) {
   event.stopPropagation();
   const name = event.target.getAttribute("name");
+  setIsDeckClicked({track: track.Name, isLoading: true})
   setIsPlayerLoading(true);
 
   const trackInDb = await isTrackInDb(track.TrackID);
@@ -61,6 +64,7 @@ export async function handleLoadDeck(
   if (trackInDb) {
     setPlayerUrl(trackInDb.url);
     setMetaData(trackInDb);
+    setIsDeckClicked({track: track.Name, isLoading: false})
     console.log(trackInDb);
   } else if (trackInDb === false) {
     const data = await uploadTrack(name);
@@ -111,5 +115,6 @@ export async function handleLoadDeck(
     console.log("metadata", metaData);
     setMetaData(metaData);
     saveToDb(metaData);
+    setIsDeckClicked({track: track.Name, isLoading: false})
   }
 }
