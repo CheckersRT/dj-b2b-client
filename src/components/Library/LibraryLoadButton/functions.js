@@ -18,7 +18,7 @@ export async function handleSubmit(event, xmlFile, setPlaylistsArray, setCollect
     try {
       const response = await fetch(
         // "http://localhost:3030/routes/getPlaylistsAndCollection"
-        "https://dj-b2b-server.vercel.app/api/getPlaylistsAndCollection"
+        "https://dj-b2b-server.vercel.app/routes/getPlaylistsAndCollection"
         , {
         method: "POST",
         body: formData,
