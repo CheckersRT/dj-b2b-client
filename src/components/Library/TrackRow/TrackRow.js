@@ -21,7 +21,7 @@ export default function TrackRow({
 
   // const [styleDeck1, setStyleDeck1] = useState("")
 
-  console.log("isDeck1Clicked: ", isDeck1Clicked)
+  // console.log("isDeck1Clicked: ", isDeck1Clicked)
 
   // useEffect(() => {
 
