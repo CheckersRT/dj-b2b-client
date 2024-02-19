@@ -2,6 +2,7 @@ import { handleLoadDeck } from "../functions";
 import styled from "styled-components"
 
 export default function TrackLoadButton({
+  deck,
   $clicked,
   track,
   setIsDeckClicked,
@@ -14,7 +15,7 @@ export default function TrackLoadButton({
   return (
     <StyledButton
       $clicked={$clicked ? true : false}
-      name={track.Name}
+      name={track.Name || track.name}
       onClick={(event) => {
         handleLoadDeck(
           event,
@@ -27,7 +28,7 @@ export default function TrackLoadButton({
         );
       }}
     >
-      Deck 1
+      Deck {deck}
     </StyledButton>
   );
 }

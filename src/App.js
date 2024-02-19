@@ -92,12 +92,12 @@ function App(className) {
           setTempoChangePercentage={setTempoChangePercentageCh2}
         />
       </Controls>
-      <LibraryLoadButton
+      {/* <LibraryLoadButton
         xmlFile={xmlFile}
         setXmlFile={setXmlFile}
         setPlaylistsArray={setPlaylistsArray}
         setCollection={setCollection}
-      ></LibraryLoadButton>
+      ></LibraryLoadButton> */}
       <Library
         className={className}
         playlistsArray={playlistsArray}
