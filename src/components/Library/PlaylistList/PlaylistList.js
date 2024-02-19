@@ -1,6 +1,7 @@
 import styles from "./PlaylistList.module.css";
 import Playlist from "../Playlist/Playlist";
 import PlaylistFolder from "../PlaylistFolder/PlaylistFolder";
+import Collection from "../Collection/Collection";
 
 export default function PlaylistList({
   playlistsArray,
@@ -9,15 +10,15 @@ export default function PlaylistList({
   setPlaylistSelected,
   collection,
 }) {
-
   return (
     <div className={styles.container}>
+      <Collection />
       <ul>
         {playlistsArray &&
           playlistsArray.map((playlist) =>
             playlist.attributes.Type === "0" ? (
               <PlaylistFolder
-              collection={collection}
+                collection={collection}
                 playlistFolder={playlist}
                 playlistSelected={playlistSelected}
                 setPlaylistSelected={setPlaylistSelected}

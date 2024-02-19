@@ -8,7 +8,7 @@ export async function handleClick(
   playlistSelected,
   setPlaylistSelected,
   setTracksArray,
-  playlist,
+  playlist
 ) {
   event.stopPropagation();
   const name = event.target.getAttribute("name");
@@ -19,14 +19,15 @@ export async function handleClick(
   try {
     const response = await fetch(
       // "http://localhost:3030/routes/getTracksInPlaylist"
-      "https://dj-b2b-server.vercel.app/routes/getTracksInPlaylist"
-      , {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ playlistName: name }),
-    });
+      "https://dj-b2b-server.vercel.app/routes/getTracksInPlaylist",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ playlistName: name }),
+      }
+    );
 
     const data = await response.json();
     console.log("Playlist from server: ", data);
@@ -48,76 +49,81 @@ export async function handleLoadDeck(
   setMetaData,
   track,
   waveform,
-  setIsDeckClicked,
-
+  setIsDeckClicked
 ) {
   event.stopPropagation();
   const name = event.target.getAttribute("name");
-  setIsDeckClicked({track: track.Name, isLoading: true})
+  setIsDeckClicked({ track: track.Name || track.name, isLoading: true });
   setIsPlayerLoading(true);
 
-  const trackInDb = await isTrackInDb(track.TrackID);
+  if (track.name) {
+    setPlayerUrl(track.url);
+    setMetaData(track)
 
-  if (waveform) {
-    console.log("this is coming through yay");
-    waveform.restart().pause();
-    // waveform.kill()
-  }
+  } else {
+    const trackInDb = await isTrackInDb(track.TrackID || track.Name);
 
-  if (trackInDb) {
-    setPlayerUrl(trackInDb.url);
-    setMetaData(trackInDb);
-    setIsDeckClicked({track: track.Name, isLoading: false})
-    console.log(trackInDb);
-  } else if (trackInDb === false) {
-    const data = await uploadTrack(name);
-    if(data.error) {
-      setIsPlayerLoading(false);
-      return
+    if (waveform) {
+      console.log("this is coming through yay");
+      waveform.restart().pause();
+      // waveform.kill()
     }
-    const url = data.url;
-    const publicID = data.public_id;
-    const waveformImageUrl = await getWaveformImageUrl(
-      data.public_id,
-      track.TotalTime
-    );
 
-    setPlayerUrl(url);
+    if (trackInDb) {
+      setPlayerUrl(trackInDb.url);
+      setMetaData(trackInDb);
+      setIsDeckClicked({ track: track.Name, isLoading: false });
+      console.log(trackInDb);
+    } else if (trackInDb === false) {
+      const data = await uploadTrack(name);
+      if (data.error) {
+        setIsPlayerLoading(false);
+        return;
+      }
+      const url = data.url;
+      const publicID = data.public_id;
+      const waveformImageUrl = await getWaveformImageUrl(
+        data.public_id,
+        track.TotalTime
+      );
 
-    const metaData = {
-      trackID: track.TrackID,
-      name: track.Name,
-      artist: track.Artist,
-      composer: track.Composer,
-      album: track.Album,
-      grouping: track.Grouping,
-      genre: track.Genre,
-      kind: track.Kind,
-      size: track.Size,
-      totalTime: track.TotalTime,
-      discNumber: track.DiscNumber,
-      trackNumber: track.TrackNumber,
-      year: track.Year,
-      bpm: track.AverageBpm,
-      dateAdded: track.DateAdded,
-      bitRate: track.BitRate,
-      sampleRate: track.SampleRate,
-      comments: track.Comments,
-      playCount: track.PlayCount,
-      rating: track.Rating,
-      location: track.Location,
-      remixer: track.Remixer,
-      tonality: track.Tonality,
-      label: track.Label,
-      mix: track.Mix,
-      url: url,
-      publicID: publicID,
-      waveformURL: waveformImageUrl,
-    };
+      setPlayerUrl(url);
 
-    console.log("metadata", metaData);
-    setMetaData(metaData);
-    saveToDb(metaData);
-    setIsDeckClicked({track: track.Name, isLoading: false})
+      const metaData = {
+        trackID: track.TrackID,
+        name: track.Name,
+        artist: track.Artist,
+        composer: track.Composer,
+        album: track.Album,
+        grouping: track.Grouping,
+        genre: track.Genre,
+        kind: track.Kind,
+        size: track.Size,
+        totalTime: track.TotalTime,
+        discNumber: track.DiscNumber,
+        trackNumber: track.TrackNumber,
+        year: track.Year,
+        bpm: track.AverageBpm,
+        dateAdded: track.DateAdded,
+        bitRate: track.BitRate,
+        sampleRate: track.SampleRate,
+        comments: track.Comments,
+        playCount: track.PlayCount,
+        rating: track.Rating,
+        location: track.Location,
+        remixer: track.Remixer,
+        tonality: track.Tonality,
+        label: track.Label,
+        mix: track.Mix,
+        url: url,
+        publicID: publicID,
+        waveformURL: waveformImageUrl,
+      };
+
+      console.log("metadata", metaData);
+      setMetaData(metaData);
+      saveToDb(metaData);
+      setIsDeckClicked({ track: track.Name || track.name, isLoading: false });
+    }
   }
 }

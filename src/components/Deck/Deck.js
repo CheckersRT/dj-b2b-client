@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { useEffect } from "react";
 
 export default function Deck({
+  trackList,
   className,
   player,
   metaData,
@@ -56,6 +57,7 @@ export default function Deck({
   return (
     <Container className={className}>
       <TrackInfoGridA
+        trackList={trackList}
         className={className}
         metaData={metaData}
         isPlayerLoading={isPlayerLoading}
