@@ -1,8 +1,8 @@
 export default async function getMetaData(formData) {
   try {
     const response = await fetch(
-      "http://localhost:3030/routes/getMetaData",
-      // "https://dj-b2b-server.vercel.app/routes/getMetadata"
+      // "http://localhost:3030/routes/getMetaData",
+      "https://dj-b2b-server.vercel.app/routes/getMetadata",
       {
         method: "POST",
         body: formData,
