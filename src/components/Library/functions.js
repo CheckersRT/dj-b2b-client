@@ -60,6 +60,12 @@ export async function handleLoadDeck(
     setPlayerUrl(track.url);
     setMetaData(track)
 
+    if (waveform) {
+      console.log("this is coming through yay");
+      waveform.restart().pause();
+      // waveform.kill()
+    }
+
   } else {
     const trackInDb = await isTrackInDb(track.TrackID || track.Name);
 
