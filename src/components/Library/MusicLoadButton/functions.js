@@ -24,6 +24,8 @@ export async function handleSubmit(
   }
   console.log("FileData from handleSubmit: ", fileData);
 
+  setIsTrackUploading(["Loading"])
+
   // send to server to get metadata from temp saved files
   const newTracksMetaData = await getMetaData(formData);
   setTrackList((prevTrackList) => [
