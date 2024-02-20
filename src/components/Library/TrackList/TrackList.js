@@ -61,14 +61,14 @@ export default function TrackList({
       {trackList ?
       <table className={styles.table} ref={tableRef}>
         <StyledHeaderRow>
-          <th 
+          <StyledColTitle 
           // onClick={() => sortTable(tableRef)}
-          >Title</th>
-          <th>Artist</th>
-          <th>BPM</th>
-          <th>Key</th>
-          <th></th>
-          <th></th>
+          >Title</StyledColTitle>
+          <StyledColArtist>Artist</StyledColArtist>
+          <StyledColBpm>BPM</StyledColBpm>
+          <StyledColKey>Key</StyledColKey>
+          <StyledButton1></StyledButton1>
+          <StyledButton2></StyledButton2>
         </StyledHeaderRow>
         {trackList.map((track) => (
               <TrackRow   
@@ -105,4 +105,23 @@ export default function TrackList({
 const StyledHeaderRow = styled.tr`
 text-align: left;
 font-size: 0.8em;
+`
+
+const StyledColTitle = styled.th`
+width: 50%
+`
+const StyledColArtist = styled.th`
+width: 20%
+`
+const StyledColBpm = styled.th`
+width: 10%
+`
+const StyledColKey = styled.th`
+width: 10%
+`
+const StyledButton1 = styled.th`
+width: 5%
+`
+const StyledButton2 = styled.th`
+width: 5%
 `

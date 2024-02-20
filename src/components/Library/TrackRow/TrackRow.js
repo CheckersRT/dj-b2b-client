@@ -29,7 +29,7 @@ export default function TrackRow({
       <StyledCell>{track.AverageBpm || track.bpm}</StyledCell>
       <StyledCell>{track.Tonality || track.tonality}</StyledCell>
       {isTrackUploading ? (
-        <StyledCell>...loading...</StyledCell>
+        <StyledCell colSpan="2">...loading...</StyledCell>
       ) : (
         <>
           <StyledCell>

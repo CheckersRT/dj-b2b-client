@@ -39,7 +39,7 @@ const StyledButton = styled.button`
   outline: none;
   background-color: transparent;
   border: 0.8px solid black;
-  padding: 8%;
+  padding: 3px;
   box-shadow: 0 0.5px #999;
 
   &:active {
