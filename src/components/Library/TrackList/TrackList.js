@@ -26,7 +26,7 @@ export default function TrackList({
     isOn: false,
   });
   const [isDeck2Clicked, setIsDeck2Clicked] = useState(false);
-  const [isTrackUploading, setIsTrackUploading] = useState();
+  const [isTrackUploading, setIsTrackUploading] = useState([]);
   const tableRef = useRef();
 
   useEffect(() => {
