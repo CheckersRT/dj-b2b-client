@@ -108,7 +108,7 @@ const Container = styled.div`
     "e . . . . c";
   grid-template-rows: 1fr 6fr 1fr 2fr 2fr;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr;
-  height: 75vh;
+  // height: 75vh;
   padding: 2% 3% 2% 3%;
   border: 1px gray solid;
   border-collaspe: collaspe;

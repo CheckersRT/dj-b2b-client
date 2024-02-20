@@ -26,7 +26,7 @@ const StyledMixer = styled.div`
   justify-items: center;
   border-top: 1px gray solid;
   border-bottom: 1px gray solid;
-  height: 100%;
+  // height: 100%;
   width: 100%;
   padding: 3% 0;
   row-gap: 2%;

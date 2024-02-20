@@ -21,7 +21,7 @@ useEffect(() => {
 }, [playOnHold, player, waveform])
 
   return (
-    <StyledDiv className={className}>
+    // <StyledDiv className={className}>
       <StyledButton
         className={className}
         onClick={() => handleCue(player, setTimeElapsed, timeElapsed, waveform) }
@@ -30,7 +30,7 @@ useEffect(() => {
       >
         <RingLight></RingLight>
       </StyledButton>
-    </StyledDiv>
+    // </StyledDiv>
   );
 }
 
@@ -56,12 +56,10 @@ background-color: white;
 `
 
 const RingLight = styled.div`
-min-width: 91px;
-min-height: 91px;
-width: 51%;
-height: 51%;
-  margin: auto;
-  border: #fadc5a 5px solid;
+width: 94px;
+height: 94px;
+  margin: auto auto auto auto;
+  border: #fadc5a 5.5px solid;
   border-radius: 50%;
   // background-color: transparent;
 `;

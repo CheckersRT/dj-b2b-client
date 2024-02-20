@@ -42,7 +42,7 @@ export default function Screen({
 }
 
 const Container = styled.div`
-  height: 22%;
+  height: 150px;
   width: 100%;
   display: flex;
   flex-direction: column;

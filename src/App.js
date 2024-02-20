@@ -122,10 +122,10 @@ function App(className) {
 export default App;
 
 const Container = styled.div`
-  width: 90%;
+  width: 1300px;
   margin: auto;
   // border: 3px pink solid;
-  height: 75vh;
+  height: 1000px;
 `;
 
 const Controls = styled.div`
@@ -133,5 +133,4 @@ const Controls = styled.div`
   grid-auto-flow: column;
   grid-template-columns: 3fr 2fr 3fr;
   // border: 3px blue solid;
-  height: 100%;
 `;

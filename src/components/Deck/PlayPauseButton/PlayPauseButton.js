@@ -60,14 +60,14 @@ const StyledButton = styled.button`
   background-color: white;
 `;
 const RingLight = styled.div`
-  min-width: 85px;
-  min-height: 85px;
+  min-width: 87px;
+  min-height: 87px;
   width: 50%;
   height: 50%;
-  margin-top: 7%;
+  margin-top: 7.5%;
   margin-left: auto;
   margin-right: auto;
-  border: #9cfa9b 6px solid;
+  border: #9cfa9b 5.5px solid;
   border-radius: 50%;
   // background-color: transparent;
 
