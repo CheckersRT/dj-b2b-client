@@ -3,6 +3,7 @@ import styles from "./TrackList.module.css";
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 import MusicLoadButton from "../MusicLoadButton/MusicLoadButton";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function TrackList({
   collection,
@@ -20,7 +21,7 @@ export default function TrackList({
   playerCh1,
   playerCh2,
 }) {
-  const [trackList, setTrackList] = useState([]);
+  const [trackList, setTrackList] = useLocalStorageState("trackList", { defaultValue: []});
   const [isDeck1Clicked, setIsDeck1Clicked] = useState({
     track: "",
     isOn: false,
