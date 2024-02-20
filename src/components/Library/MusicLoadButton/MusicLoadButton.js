@@ -41,5 +41,5 @@ const StyledForm = styled.form`
 `;
 
 const StyledButton = styled.button`
-  padding: 0 10px;
+  padding: 0 20px;
 `;
