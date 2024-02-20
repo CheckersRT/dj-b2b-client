@@ -17,5 +17,6 @@ export default async function uploadMultipleTracks(formData) {
     return data;
   } catch (error) {
     console.error("Error in uploadMultipleTracks: ", error);
+    alert(`Something's gone wrong: ${error}`)
   }
 }

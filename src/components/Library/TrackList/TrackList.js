@@ -1,9 +1,8 @@
 import TrackRow from "../TrackRow/TrackRow";
 import styles from "./TrackList.module.css";
-import styled from "styled-components"
-import {useEffect, useRef, useState} from "react"
+import styled from "styled-components";
+import { useEffect, useRef, useState } from "react";
 import MusicLoadButton from "../MusicLoadButton/MusicLoadButton";
-
 
 export default function TrackList({
   collection,
@@ -20,25 +19,24 @@ export default function TrackList({
   waveformCh2,
   playerCh1,
   playerCh2,
-
 }) {
-  const [trackList, setTrackList] = useState([])
-  const [isDeck1Clicked, setIsDeck1Clicked] = useState({track: "", isOn: false})
-  const [isDeck2Clicked, setIsDeck2Clicked] = useState(false)
-  const [isTrackUploading, setIsTrackUploading] = useState()
-  const tableRef = useRef()
+  const [trackList, setTrackList] = useState([]);
+  const [isDeck1Clicked, setIsDeck1Clicked] = useState({
+    track: "",
+    isOn: false,
+  });
+  const [isDeck2Clicked, setIsDeck2Clicked] = useState(false);
+  const [isTrackUploading, setIsTrackUploading] = useState();
+  const tableRef = useRef();
 
   useEffect(() => {
-    if(playlist) {
-
+    if (playlist) {
       console.log("Playlist: ", playlist);
-    
+
       // console.log("Playlist to get: ", playlistToGet.elements);
-      const trackKeys = playlist.elements.map(
-        (track) => track.attributes.Key
-        );
-        console.log("trackKeys: ", trackKeys);
-    
+      const trackKeys = playlist.elements.map((track) => track.attributes.Key);
+      console.log("trackKeys: ", trackKeys);
+
       const trackList = [];
       for (let i = 0; i < trackKeys.length; i++) {
         const track = collection.find(
@@ -46,32 +44,37 @@ export default function TrackList({
         );
         trackList.push(track.attributes);
       }
-      console.log(trackList)
-      setTrackList(trackList)
+      console.log(trackList);
+      setTrackList(trackList);
     }
+  }, [playlist, collection]);
 
-  }, [playlist, collection])
-
-  console.log("Tracklist in TrackList component: ", trackList)
-  console.log("IsTrackUploading?: ", isTrackUploading)
+  console.log("Tracklist in TrackList component: ", trackList);
+  console.log("IsTrackUploading?: ", isTrackUploading);
 
   return (
     <div className={styles.container}>
-      <MusicLoadButton setTrackList={setTrackList} setIsTrackUploading={setIsTrackUploading}/>
-      {trackList ?
-      <table className={styles.table} ref={tableRef}>
-        <StyledHeaderRow>
-          <StyledColTitle 
-          // onClick={() => sortTable(tableRef)}
-          >Title</StyledColTitle>
-          <StyledColArtist>Artist</StyledColArtist>
-          <StyledColBpm>BPM</StyledColBpm>
-          <StyledColKey>Key</StyledColKey>
-          <StyledButton1></StyledButton1>
-          <StyledButton2></StyledButton2>
-        </StyledHeaderRow>
-        {trackList.map((track) => (
-              <TrackRow   
+      <MusicLoadButton
+        setTrackList={setTrackList}
+        setIsTrackUploading={setIsTrackUploading}
+        isTrackUploading={isTrackUploading.length > 0 ? true : false}
+      />
+      {trackList ? (
+        <table className={styles.table} ref={tableRef}>
+          <StyledHeaderRow>
+            <StyledColTitle
+            // onClick={() => sortTable(tableRef)}
+            >
+              Title
+            </StyledColTitle>
+            <StyledColArtist>Artist</StyledColArtist>
+            <StyledColBpm>BPM</StyledColBpm>
+            <StyledColKey>Key</StyledColKey>
+            <StyledButton1></StyledButton1>
+            <StyledButton2></StyledButton2>
+          </StyledHeaderRow>
+          {trackList.map((track) => (
+            <TrackRow
               key={track.Name || track.name}
               track={track}
               isTrackUploading={isTrackUploading.includes(track.name)}
@@ -93,35 +96,34 @@ export default function TrackList({
               setIsDeck2Clicked={setIsDeck2Clicked}
               $clicked1={track.name === isDeck1Clicked.track ? true : false}
               $clicked2={track.name === isDeck2Clicked.track ? true : false}
-              />
-            ))
-          }
-      </table>
-      : null}
+            />
+          ))}
+        </table>
+      ) : null}
     </div>
   );
 }
 
 const StyledHeaderRow = styled.tr`
-text-align: left;
-font-size: 0.8em;
-`
+  text-align: left;
+  font-size: 0.8em;
+`;
 
 const StyledColTitle = styled.th`
-width: 50%
-`
+  width: 50%;
+`;
 const StyledColArtist = styled.th`
-width: 20%
-`
+  width: 20%;
+`;
 const StyledColBpm = styled.th`
-width: 10%
-`
+  width: 10%;
+`;
 const StyledColKey = styled.th`
-width: 10%
-`
+  width: 10%;
+`;
 const StyledButton1 = styled.th`
-width: 5%
-`
+  width: 5%;
+`;
 const StyledButton2 = styled.th`
-width: 5%
-`
+  width: 5%;
+`;
