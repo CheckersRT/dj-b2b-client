@@ -36,7 +36,7 @@ useEffect(() => {
       
       setTimeout(() => {
       const waveformWidthAdjustedForTempo =
-      waveformTotalWidth + waveformTotalWidth * tempoChangePercentage;
+      waveformTotalWidth + waveformTotalWidth * -tempoChangePercentage;
 
       setWaveformWidth(waveformWidthAdjustedForTempo);
     }, 500)
