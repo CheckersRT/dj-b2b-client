@@ -1,5 +1,5 @@
 const production = {
-  url: "https://dj-b2b-server-production.up.railway.app",
+  url: "https://dj-b2b-server.vercel.app",
 };
 const development = {
   url: "http://localhost:3030",

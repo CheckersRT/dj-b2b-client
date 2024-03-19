@@ -15,9 +15,11 @@ export default function createPlayer(channel) {
   let url;
 
   if (channel === 1) {
-    url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706094686/DJ%20b2b/16509589_Machines__Original.mp3";
+    // url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706094686/DJ%20b2b/16509589_Machines__Original.mp3";
+    url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706448421/DJ%20b2b/8705949_CLOCK__Original_Mix.mp3";
   } else if (channel === 2) {
-    url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706094686/DJ%20b2b/16509589_Machines__Original.mp3";
+    // url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706094686/DJ%20b2b/16509589_Machines__Original.mp3";
+    url = "https://res.cloudinary.com/dm1n4kfee/video/upload/v1706447912/DJ%20b2b/8096989_Rub__Original_Mix.mp3";
   }
 
   const player = new Player({
