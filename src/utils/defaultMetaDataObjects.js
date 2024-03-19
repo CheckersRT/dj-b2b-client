@@ -1,0 +1,33 @@
+export const defaultTrack1 = {
+    name: 'CLOCK (Original Mix)',
+    artist: 'Plaid',
+    album: 'The Digging Remedy',
+    kind: 'mp3',
+    size: 10685283,
+    totalTime: 264.045714,
+    trackNumber: '3',
+    bpm: 102,
+    dateAdded: '2024-01-28T13:27:01Z',
+    bitRate: 323740,
+    tonality: 'Fmin',
+    url: 'https://res.cloudinary.com/dm1n4kfee/video/upload/v1706448421/DJ%20b2b/8705949_CLOCK__Original_Mix.mp3',
+    publicID: 'DJ b2b/8705949_CLOCK__Original_Mix',
+    waveformURL: 'https://res.cloudinary.com/dm1n4kfee/video/upload/c_scale,h_45,w_13202/b_white,co_black,fl_waveform/DJ b2b/8705949_CLOCK__Original_Mix.png',
+}
+
+export const defaultTrack2 = {
+    name: 'Rub (Original Mix)',
+    artist: 'Tessela',
+    album: 'Structures and Solutions',
+    kind: 'mp3',
+    size: 15031303,
+    totalTime: 371.644082,
+    trackNumber: '12',
+    bpm: 130,
+    dateAdded: '2024-01-28T13:18:32Z',
+    bitRate: 323563,
+    tonality: 'Cmin',
+    url: 'https://res.cloudinary.com/dm1n4kfee/video/upload/v1706447912/DJ%20b2b/8096989_Rub__Original_Mix.mp3',
+    publicID: 'DJ b2b/8096989_Rub__Original_Mix',
+    waveformURL: 'https://res.cloudinary.com/dm1n4kfee/video/upload/c_scale,h_45,w_18582/b_white,co_black,fl_waveform/DJ b2b/8096989_Rub__Original_Mix.png',
+}

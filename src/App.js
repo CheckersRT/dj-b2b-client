@@ -7,13 +7,14 @@ import { useState, useRef } from "react";
 import createPlayer from "./utils/createPlayer";
 import styled from "styled-components";
 import LibraryLoadButton from "./components/Library/LibraryLoadButton/LibraryLoadButton";
+import { defaultTrack1, defaultTrack2 } from "./utils/defaultMetaDataObjects";
 
 const playerCh1 = createPlayer(1);
 const playerCh2 = createPlayer(2);
 
 function App(className) {
-  const [metaDataCh1, setMetaDataCh1] = useState({});
-  const [metaDataCh2, setMetaDataCh2] = useState({});
+  const [metaDataCh1, setMetaDataCh1] = useState(defaultTrack1);
+  const [metaDataCh2, setMetaDataCh2] = useState(defaultTrack2);
   const [timeOnPlayCh1, setTimeOnPlayCh1] = useState(0);
   const [timeOnPlayCh2, setTimeOnPlayCh2] = useState(0);
   const [timeElapsedCh1, setTimeElapsedCh1] = useState(0);

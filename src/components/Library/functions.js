@@ -2,6 +2,7 @@ import uploadTrack from "../../api/uploadTrack";
 import saveToDb from "../../api/saveToDb";
 import isTrackInDb from "../../api/isTrackInDb";
 import getWaveformImageUrl from "./getWaveformImageUrl";
+import {config} from "../../api/consts.js"
 
 export async function handleClick(
   event,
@@ -17,9 +18,9 @@ export async function handleClick(
   setPlaylistSelected(!playlistSelected);
 
   try {
-    const response = await fetch(
-      // "http://localhost:3030/routes/getTracksInPlaylist"
-      "https://dj-b2b-server.vercel.app/routes/getTracksInPlaylist",
+    const response = await fetch(`${config.url}/routes/getTracksInPlaylist`,
+      // "http://localhost:3030/routes/getTracksInPlaylist",
+      // "https://dj-b2b-server.vercel.app/routes/getTracksInPlaylist",
       {
         method: "POST",
         headers: {

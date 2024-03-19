@@ -5,8 +5,6 @@ const url = config.url
 export default async function uploadMultipleTracks(formData) {
   try {
     const response = await fetch(`${url}/routes/uploadMultipleTracks`,
-    //   "https://dj-b2b-server-production.up.railway.app/routes/uploadMultipleTracks",
-    //   "http://localhost:3030/routes/uploadMultipleTracks",
       {
         method: "POST",
         body: formData,

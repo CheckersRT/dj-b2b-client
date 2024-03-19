@@ -10,6 +10,8 @@ export default function TrackInfo({
 }) {
   const [bpm, setBpm] = useState(0);
 
+  console.log("metaData object: ", metaData)
+
   useEffect(() => {
     if (metaData.bpm) {
       const bpm =
